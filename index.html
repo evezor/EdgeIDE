@@ -1,22 +1,27 @@
 <!DOCTYPE html>
+<html>
 
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>EvezorEDGE IDE Beta</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" / <title>EvezorEDGE IDE Beta</title>
 
-
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link type="text/css" rel="stylesheet" href="./css/application.css" />
+
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
   <script src="./lib/jquery.browser.js"></script>
+
 
   <script src="./draw2d.js"></script>
 
   <script src="./app/Application.js"></script>
   <script src="./app/View.js"></script>
   <script src="./app/Toolbar.js"></script>
+
+  <script src="./app/DblClickCanvasPolicy.js"></script>
+
 
   <script src="./app/B3.js"></script>
   <script src="./app/Joypad.js"></script>
@@ -62,6 +67,8 @@
           return connection;
         }
       }));
+      app.view.installEditPolicy(new DblClickCanvasPolicy());
+
 
 
       // unmarshal the JSON document into the canvas
@@ -89,6 +96,23 @@
   </div>
 
   <div id="canvas">
+  </div>
+
+  <div id="dialog" title="Basic dialog">
+    <table style="width:100%">
+      <tr>
+        <th>Param</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>test1</td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td>Test2</td>
+        <td>0</td>
+      </tr>
+    </table>
   </div>
 </body>
 

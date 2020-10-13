@@ -37,7 +37,6 @@ B3 = draw2d.shape.basic.Rectangle.extend({
   } ,
 
 
-
    /**
     * @method
     * Set the name of the DB table. Visually it is the header of the shape
