@@ -1,16 +1,18 @@
 <!DOCTYPE html>
+<html>
 
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>EvezorEDGE IDE Beta</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" / <title>EvezorEDGE IDE Beta</title>
 
-
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link type="text/css" rel="stylesheet" href="./css/application.css" />
+
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
   <script src="./lib/jquery.browser.js"></script>
+
 
   <script src="./draw2d.js"></script>
 
@@ -18,10 +20,15 @@
   <script src="./app/View.js"></script>
   <script src="./app/Toolbar.js"></script>
 
+  <script src="./app/DblClickCanvasPolicy.js"></script>
+
+
   <script src="./app/B3.js"></script>
   <script src="./app/Joypad.js"></script>
+  <script src="./app/paramHandler.js"></script>
 
   <script src="document.js"></script>
+
 
   <style>
     .draw2d_InputPort {
@@ -49,7 +56,7 @@
     document.addEventListener("DOMContentLoaded", function() {
 
       var routerToUse = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
-      var app = new example.Application();
+      app = new evezorIDE.Application();
       app.view.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
         createConnection: function() {
           var connection = new draw2d.Connection({
@@ -62,6 +69,8 @@
           return connection;
         }
       }));
+      app.view.installEditPolicy(new DblClickCanvasPolicy());
+
 
 
       // unmarshal the JSON document into the canvas
@@ -90,6 +99,25 @@
 
   <div id="canvas">
   </div>
+
+  <template>
+    <div class="paramTable" title="Paramters">
+      <form>
+        <label for="name">Name:</label><br>
+        <input type="text" name="name"><br>
+        <label for="debounceA">Debounce Button A (ms):</label><br>
+        <input type="text" name="debounceA"><br>
+        <label for="debounceB">Debounce Button B (ms):</label><br>
+        <input type="text" name="debounceB">
+        <input type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">
+        <input type="hidden" name="figureID">
+        <input type="text" name="domID">
+      </form>
+
+    </div>
+  </template>
+
 </body>
+
 
 </html>

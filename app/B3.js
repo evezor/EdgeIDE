@@ -7,14 +7,14 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     }, attr));
 
     this.classLabel = new draw2d.shape.basic.Label({
-      text: "New B3",
+      text: "NewB3",
       stroke: 1,
       fontColor: "#5856d6",
       bgColor: "#f7f7f7",
       radius: this.getRadius(),
       padding: 10,
       resizeable: true,
-      editor: new draw2d.ui.LabelInplaceEditor()
+      //editor: new draw2d.ui.LabelInplaceEditor()
     });
     this.add(this.classLabel, new draw2d.layout.locator.CenterLocator());
 
@@ -35,7 +35,6 @@ B3 = draw2d.shape.basic.Rectangle.extend({
 		pot0.add(new draw2d.shape.basic.Label({text: "Pot 0",}),new draw2d.layout.locator.LeftLocator());
 
   } ,
-
 
 
    /**

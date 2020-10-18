@@ -2,32 +2,32 @@
 TableShape = draw2d.shape.layout.VerticalLayout.extend({
 
 	NAME: "TableShape",
-	
+
     init : function(attr)
     {
     	this._super($.extend({bgColor:"#dbddde", color:"#d7d7d7", stroke:1, radius:3},attr));
-        
-      
+
+
         this.classLabel = new draw2d.shape.basic.Label({
-            text:"ClassName", 
+            text:"ClassName",
             stroke:1,
-            fontColor:"#5856d6",  
-            bgColor:"#f7f7f7", 
-            radius: this.getRadius(), 
+            fontColor:"#5856d6",
+            bgColor:"#f7f7f7",
+            radius: this.getRadius(),
             padding:10,
             resizeable:true,
             editor:new draw2d.ui.LabelInplaceEditor()
         });
-       
-        
+
+
         this.add(this.classLabel);
     },
-     
- 
+
+
     /**
      * @method
      * Add an entity to the db shape
-     * 
+     *
      * @param {String} txt the label to show
      * @param {Number} [optionalIndex] index where to insert the entity
      */
@@ -47,19 +47,19 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
 //        label.installEditor(new draw2d.ui.LabelEditor());
 	     var input = label.createPort("input");
 	     var output= label.createPort("output");
-	     
+
          input.setName("input_"+label.id);
          output.setName("output_"+label.id);
-         
+
          var _table=this;
          label.on("contextmenu", function(emitter, event){
              $.contextMenu({
-                 selector: 'body', 
+                 selector: 'body',
                  events:
-                 {  
+                 {
                      hide:function(){ $.contextMenu( 'destroy' ); }
                  },
-                 callback: $.proxy(function(key, options) 
+                 callback: $.proxy(function(key, options)
                  {
                     switch(key){
                     case "rename":
@@ -79,11 +79,11 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
                     default:
                         break;
                     }
-                 
+
                  },this),
                  x:event.x,
                  y:event.y,
-                 items: 
+                 items:
                  {
                      "rename": {name: "Rename"},
                      "new":    {name: "New Entity"},
@@ -92,7 +92,7 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
                  }
              });
          });
-         
+
 	     if($.isNumeric(optionalIndex)){
              this.add(label, null, optionalIndex+1);
 	     }
@@ -102,13 +102,13 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
 
 	     return label;
     },
-    
+
     /**
      * @method
      * Remove the entity with the given index from the DB table shape.<br>
      * This method removes the entity without care of existing connections. Use
      * a draw2d.command.CommandDelete command if you want to delete the connections to this entity too
-     * 
+     *
      * @param {Number} index the index of the entity to remove
      */
     removeEntity: function(index)
@@ -119,33 +119,33 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
     /**
      * @method
      * Returns the entity figure with the given index
-     * 
+     *
      * @param {Number} index the index of the entity to return
      */
     getEntity: function(index)
     {
         return this.children.get(index+1).figure;
     },
-     
+
 
      /**
       * @method
       * Set the name of the DB table. Visually it is the header of the shape
-      * 
+      *
       * @param name
       */
      setName: function(name)
      {
          this.classLabel.setText(name);
-         
+
          return this;
      },
-     
-     
+
+
      /**
-      * @method 
+      * @method
       * Return an objects with all important attributes for XML or JSON serialization
-      * 
+      *
       * @returns {Object}
       */
      getPersistentAttributes : function()
@@ -155,7 +155,7 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
         memento.name = this.classLabel.getText();
         memento.entities   = [];
         this.children.each(function(i,e){
-            
+
             if(i>0){ // skip the header of the figure
                 memento.entities.push({
                     text:e.figure.getText(),
@@ -163,12 +163,12 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
                 });
             }
         });
-         
+
          return memento;
      },
-     
+
      /**
-      * @method 
+      * @method
       * Read all attributes from the serialized properties and transfer them into the shape.
       *
       * @param {Object} memento
@@ -177,7 +177,7 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
      setPersistentAttributes : function(memento)
      {
          this._super(memento);
-         
+
          this.setName(memento.name);
 
          if(typeof memento.entities !== "undefined"){
@@ -190,6 +190,6 @@ TableShape = draw2d.shape.layout.VerticalLayout.extend({
          }
 
          return this;
-     }  
+     }
 
 });
