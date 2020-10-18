@@ -25,8 +25,12 @@ var DblClickCanvasPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
         temp = document.getElementsByTagName("template")[0];
         table = temp.content.querySelector("div");
         a = document.importNode(table, true);
-        //name = figure.getChildren().get(0).getText(); // This version is used if you click on the rectangle (The parent shape)
-        name = figure.getText(); // This version is used if you click on the label (The child shape)
+        var board = figure.getRoot();
+        if(board == null){ // getRoot returns null if the shape clicked is already the root node.
+          board = figure;
+        }
+        name = board.getChildren().get(0).getText(); // This version is used if you click on the rectangle (The parent shape)
+        //name = figure.getText(); // This version is used if you click on the label (The child shape)
 
         a.setAttribute("id", name);
 
@@ -34,7 +38,7 @@ var DblClickCanvasPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
 
         form = document.getElementById(name).firstElementChild;
         form.elements["name"].value = name;
-        form.elements["figureID"].value = figure.getParent().getId();
+        form.elements["figureID"].value = board.getId();
 
 
         $("#" + name).dialog({
