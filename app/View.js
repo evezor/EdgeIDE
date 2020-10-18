@@ -1,4 +1,4 @@
-example.View = draw2d.Canvas.extend({
+evezorIDE.View = draw2d.Canvas.extend({
 
   init: function(id) {
     this._super(id, 2000, 2000);

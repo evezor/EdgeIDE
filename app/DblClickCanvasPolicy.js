@@ -18,8 +18,27 @@ var DblClickCanvasPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
   onDoubleClick: function(figure, mouseX, mouseY, shiftKey, ctrlKey) {
     if (figure !== null) {
       $(function() {
-        $("#dialog").dialog({
-          position: [mouseX,mouseY]
+
+        //alert(figure.getChildren().get(0).getText());
+
+
+        temp = document.getElementsByTagName("template")[0];
+        table = temp.content.querySelector("div");
+        a = document.importNode(table, true);
+        //name = figure.getChildren().get(0).getText(); // This version is used if you click on the rectangle (The parent shape)
+        name = figure.getText(); // This version is used if you click on the label (The child shape)
+
+        a.setAttribute("id", name);
+
+        document.body.appendChild(a);
+
+        form = document.getElementById(name).firstElementChild;
+        form.elements["name"].value = name;
+        form.elements["figureID"].value = figure.getParent().getId();
+
+
+        $("#" + name).dialog({
+          position: [mouseX, mouseY]
         });
       });
     }

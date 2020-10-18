@@ -25,8 +25,10 @@
 
   <script src="./app/B3.js"></script>
   <script src="./app/Joypad.js"></script>
+  <script src="./app/paramHandler.js"></script>
 
   <script src="document.js"></script>
+
 
   <style>
     .draw2d_InputPort {
@@ -54,7 +56,7 @@
     document.addEventListener("DOMContentLoaded", function() {
 
       var routerToUse = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
-      var app = new example.Application();
+      app = new evezorIDE.Application();
       app.view.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
         createConnection: function() {
           var connection = new draw2d.Connection({
@@ -98,22 +100,23 @@
   <div id="canvas">
   </div>
 
-  <div id="dialog" title="Basic dialog">
-    <table style="width:100%">
-      <tr>
-        <th>Param</th>
-        <th>Value</th>
-      </tr>
-      <tr>
-        <td>test1</td>
-        <td>True</td>
-      </tr>
-      <tr>
-        <td>Test2</td>
-        <td>0</td>
-      </tr>
-    </table>
-  </div>
+  <template>
+    <div class="paramTable" title="Paramters">
+      <form>
+        <label for="name">Name:</label><br>
+        <input type="text" name="name"><br>
+        <label for="debounceA">Debounce Button A (ms):</label><br>
+        <input type="text" name="debounceA"><br>
+        <label for="debounceB">Debounce Button B (ms):</label><br>
+        <input type="text" name="debounceB">
+        <input type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">
+        <input type="hidden" name="figureID">
+      </form>
+
+    </div>
+  </template>
+
 </body>
+
 
 </html>

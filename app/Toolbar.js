@@ -1,4 +1,4 @@
-example.Toolbar = Class.extend({
+evezorIDE.Toolbar = Class.extend({
 
   init: function(elementId, view) {
     this.html = $("#" + elementId);
