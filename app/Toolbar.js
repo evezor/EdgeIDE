@@ -47,13 +47,15 @@ evezorIDE.Toolbar = Class.extend({
     this.delimiter2 = $("<span class='toolbar_delimiter'>&nbsp;</span>");
     this.html.append(this.delimiter2);
 
+    //Inject the EXPORT button
+
     this.exportButton = $("<button class='gray'>ExportJSON</button>");
     this.html.append(this.exportButton);
     this.exportButton.click($.proxy(function() {
       var writer = new draw2d.io.json.Writer();
       writer.marshal(view, function(json) {
         // convert the json object into string
-        var jsonTxt = JSON.stringify(json,null,2);
+        var jsonTxt = JSON.stringify(createExportObject(json),null,2);
         downloadToFile(jsonTxt, 'map.json', 'application/json');
 
 

@@ -25,23 +25,31 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     led0.add(new draw2d.shape.basic.Label({
       text: "LED 0",
     }), new draw2d.layout.locator.RightLocator());
+    led0.setName("led0");
+
     var led1 = this.createPort("input");
     led1.add(new draw2d.shape.basic.Label({
       text: "LED 1",
     }), new draw2d.layout.locator.RightLocator());
+    led1.setName("led1");
+
     var button0 = this.createPort("output");
     button0.add(new draw2d.shape.basic.Label({
       text: "Button 0",
     }), new draw2d.layout.locator.LeftLocator());
+    button0.setName("button0");
+
     var button1 = this.createPort("output");
     button1.add(new draw2d.shape.basic.Label({
       text: "Button 1",
     }), new draw2d.layout.locator.LeftLocator());
+    button1.setName("button1");
 
     var pot0 = this.createPort("output");
     pot0.add(new draw2d.shape.basic.Label({
       text: "Pot 0",
     }), new draw2d.layout.locator.LeftLocator());
+    pot0.setName("pot0");
   },
 
 
