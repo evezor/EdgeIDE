@@ -52,6 +52,114 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     pot0.setName("pot0");
   },
 
+  /**
+   * @method
+   * Add an entity to the db shape
+   *
+   * @param {String} txt the label to show
+   * @param {Number} [optionalIndex] index where to insert the entity
+   */
+  addEntity: function(txt, optionalIndex) {
+    var label = new draw2d.shape.basic.Label({
+      text: txt,
+      stroke: 0,
+      radius: 0,
+      bgColor:  new draw2d.util.Color(6,135,112),
+      padding: {
+        left: 10,
+        top: 3,
+        right: 10,
+        bottom: 5
+      },
+      fontColor: "#FFFFFF",
+      resizeable: true,
+      editor: new draw2d.ui.LabelEditor()
+    });
+
+    //        label.installEditor(new draw2d.ui.LabelEditor());
+    var input = label.createPort("input");
+    var output = label.createPort("output");
+
+    input.setName("input_" + label.id);
+    output.setName("output_" + label.id);
+
+    var _table = this;
+    label.on("contextmenu", function(emitter, event) {
+      $.contextMenu({
+        selector: 'body',
+        events: {
+          hide: function() {
+            $.contextMenu('destroy');
+          }
+        },
+        callback: $.proxy(function(key, options) {
+          switch (key) {
+            case "rename":
+              setTimeout(function() {
+                emitter.onDoubleClick();
+              }, 10);
+              break;
+            case "new":
+              setTimeout(function() {
+                _table.addEntity("_new_").onDoubleClick();
+              }, 10);
+              break;
+            case "delete":
+              // with undo/redo support
+              var cmd = new draw2d.command.CommandDelete(emitter);
+              emitter.getCanvas().getCommandStack().execute(cmd);
+            default:
+              break;
+          }
+
+        }, this),
+        x: event.x,
+        y: event.y,
+        items: {
+          "rename": {
+            name: "Rename"
+          },
+          "new": {
+            name: "New Entity"
+          },
+          "sep1": "---------",
+          "delete": {
+            name: "Delete"
+          }
+        }
+      });
+    });
+
+    if ($.isNumeric(optionalIndex)) {
+      this.add(label, new draw2d.layout.locator.BottomLocator(), optionalIndex + 1);
+    } else {
+      this.add(label,new draw2d.layout.locator.BottomLocator());
+    }
+
+    return label;
+  },
+
+  /**
+   * @method
+   * Remove the entity with the given index from the DB table shape.<br>
+   * This method removes the entity without care of existing connections. Use
+   * a draw2d.command.CommandDelete command if you want to delete the connections to this entity too
+   *
+   * @param {Number} index the index of the entity to remove
+   */
+  removeEntity: function(index) {
+    this.remove(this.children.get(index + 1).figure);
+  },
+
+  /**
+   * @method
+   * Returns the entity figure with the given index
+   *
+   * @param {Number} index the index of the entity to return
+   */
+  getEntity: function(index) {
+    return this.children.get(index + 1).figure;
+  },
 
   /**
    * @method
