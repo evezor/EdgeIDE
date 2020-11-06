@@ -1,7 +1,7 @@
 function paramHandler(form) {
   figure = app.view.getFigure(form.figureID.value);
   figure.setName(form.name.value);
-  figure.addEntity(form.debounceA.value,0);
+  figure.addEntity(form.debounceA.name,0);
   $(form).closest(".ui-dialog-content").dialog("close");
 }
 
