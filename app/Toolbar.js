@@ -47,30 +47,16 @@ evezorIDE.Toolbar = Class.extend({
     this.delimiter2 = $("<span class='toolbar_delimiter'>&nbsp;</span>");
     this.html.append(this.delimiter2);
 
+    //Inject the EXPORT button
+
     this.exportButton = $("<button class='gray'>ExportJSON</button>");
     this.html.append(this.exportButton);
     this.exportButton.click($.proxy(function() {
       var writer = new draw2d.io.json.Writer();
-      writer.marshal(canvas, function(json) {
-        // convert the json object into string representation
-        var file = new Blob(json, {
-          type: "json"
-        });
-        if (window.navigator.msSaveOrOpenBlob) // IE10+
-          window.navigator.msSaveOrOpenBlob(file, filename);
-        else { // Others
-          var a = document.createElement("a"),
-            url = URL.createObjectURL(file);
-          a.href = url;
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-          }, 0);
-        }
-
+      writer.marshal(view, function(json) {
+        // convert the json object into string
+        var jsonTxt = JSON.stringify(createExportObject(json),null,2);
+        downloadToFile(jsonTxt, 'map.json', 'application/json');
 
 
       });
