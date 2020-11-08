@@ -17,6 +17,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     });
     this.add(this.classLabel, new draw2d.layout.locator.CenterLocator());
 
+    this.initParameterTable();
     /** Init IO
      *  This section is used to initialize the required IO for a board
      *
@@ -51,6 +52,48 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     }), new draw2d.layout.locator.LeftLocator());
     pot0.setName("pot0");
   },
+  /**
+   * @method
+   * Initialize parameter table
+   *
+   * @param none
+   */
+
+  initParameterTable: function() {
+    temp = document.getElementsByTagName("template")[0];
+    table = temp.content.querySelector("div");
+    a = document.importNode(table, true);
+
+    name = this.classLabel.getText(); //Get the name of the shape from the form
+    name = name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""); //
+    a.setAttribute("id", name);
+    document.body.appendChild(a);
+    $("#" + name).jsonForm({
+      schema: {
+        name: {
+          type: 'string',
+          title: 'name'
+        },
+        debounce: {
+          type: 'string',
+          title: 'debounceA'
+        },
+        figureID: {
+          type: 'string',
+          title: 'figureID'
+        }
+      },
+      onSubmit: function(errors, values) {
+        if (errors) {
+          alert("Check for invalid parameters!");
+          return;
+        }
+        this.paramHandler(values);
+      }
+    });
+
+  },
+
 
   /**
    * @method
@@ -199,24 +242,16 @@ B3 = draw2d.shape.basic.Rectangle.extend({
   },
   /**
    * @method
-   *  generate parameter table form
+   *  handleParameterTable Saving
    *
-   * @param domID
+   * @param values
    */
-  getForm: function(domID) {
-    $("#" + domID).jsonForm({
-      schema: {
-        name: {
-          type: 'string',
-          title: 'name'
-        },
-        debounce: {
-          type: 'string',
-          title: 'debounceA'
-        }
-      },
-      onSubmit: paramHandler(this.form)
-    });
+  paramHandler: function(values) {
+    alert("PING!");
+    figure = app.view.getFigure(values.figureID);
+    figure.setName(values.name);
+    //figure.addEntity(form.debounceA.name,0);
+    $(form).closest(".ui-dialog-content").dialog("close");
   }
 
 });

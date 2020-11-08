@@ -7,11 +7,17 @@
 
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link type="text/css" rel="stylesheet" href="./css/application.css" />
+  <link rel="stylesheet" type="text/css" href="deps/opt/bootstrap.css" />
+
 
 
   <script src="./lib/jquery.js"></script>
   <script src="./lib/jquery-ui.js"></script>
   <script src="./lib/jquery.browser.js"></script>
+
+<script type="text/javascript" src="./deps/underscore.js"></script>
+<script type="text/javascript" src="./deps/opt/jsv.js"></script>
+<script type="text/javascript" src="./lib/jsonform.js"></script>
 
 
   <script src="./draw2d.js"></script>
@@ -102,18 +108,7 @@
 
   <template>
     <div class="paramTable" title="Parameters">
-      <form>
-        <label for="name">Name:</label><br>
-        <input type="text" name="name"><br>
-        <label for="debounceA">Debounce Button A (ms):</label><br>
-        <input type="text" name="debounceA"><br>
-        <label for="debounceB">Debounce Button B (ms):</label><br>
-        <input type="text" name="debounceB">
-        <input type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">
-        <input type="hidden" name="figureID">
-        <input type="hidden" name="domID">
-      </form>
-
+      <form></form>
     </div>
   </template>
 

@@ -1,10 +1,3 @@
-function paramHandler(form) {
-  figure = app.view.getFigure(form.figureID.value);
-  figure.setName(form.name.value);
-  figure.addEntity(form.debounceA.name,0);
-  $(form).closest(".ui-dialog-content").dialog("close");
-}
-
 function downloadToFile(content, filename, contentType) {
   const a = document.createElement('a');
   const file = new Blob([content], {
