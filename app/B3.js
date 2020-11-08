@@ -64,7 +64,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       text: txt,
       stroke: 0,
       radius: 0,
-      bgColor:  new draw2d.util.Color(6,135,112),
+      bgColor: new draw2d.util.Color(6, 135, 112),
       padding: {
         left: 10,
         top: 3,
@@ -133,7 +133,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     if ($.isNumeric(optionalIndex)) {
       this.add(label, new draw2d.layout.locator.BottomLocator(), optionalIndex + 1);
     } else {
-      this.add(label,new draw2d.layout.locator.BottomLocator());
+      this.add(label, new draw2d.layout.locator.BottomLocator());
     }
 
     return label;
@@ -196,8 +196,27 @@ B3 = draw2d.shape.basic.Rectangle.extend({
   setPersistentAttributes: function(memento) {
     this.classLabel.setPersistentAttributes(memento.label);
     this._super(memento.primary);
+  },
+  /**
+   * @method
+   *  generate parameter table form
+   *
+   * @param domID
+   */
+  getForm: function(domID) {
+    $("#" + domID).jsonForm({
+      schema: {
+        name: {
+          type: 'string',
+          title: 'name'
+        },
+        debounce: {
+          type: 'string',
+          title: 'debounceA'
+        }
+      },
+      onSubmit: paramHandler(this.form)
+    });
   }
-
-
 
 });

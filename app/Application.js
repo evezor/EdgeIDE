@@ -20,7 +20,7 @@ evezorIDE.Application = Class.extend(
     init : function()
     {
 	      this.view    = new evezorIDE.View("canvas");
-          this.toolbar = new evezorIDE.Toolbar("toolbar",  this.view );
+        this.toolbar = new evezorIDE.Toolbar("toolbar",  this.view );
 	}
 
 
