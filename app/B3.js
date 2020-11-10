@@ -3,7 +3,10 @@ B3 = draw2d.shape.basic.Rectangle.extend({
   NAME: "B3",
   init: function(attr) {
     this._super($.extend({
-      bgColor: "#999999"
+      bgColor: "#999999",
+      width: 200,
+      height: 100,
+      resizeable: false
     }, attr));
 
     this.classLabel = new draw2d.shape.basic.Label({
@@ -13,7 +16,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       bgColor: "#f7f7f7",
       radius: this.getRadius(),
       padding: 10,
-      resizeable: false,
+      resizeable: false
     });
     this.add(this.classLabel, new draw2d.layout.locator.CenterLocator());
 
@@ -79,8 +82,12 @@ B3 = draw2d.shape.basic.Rectangle.extend({
         },
         pot0: {
           type: 'string',
-          title: 'pot0'
+          title: 'Potentiometer 0 Value'
         },
+        // pot0Display: {
+        //   type: 'checkbox',
+        //   title: "Show on Canvas - Potentiometer 0"
+        // },
         figureID: {
           type: 'hidden',
           title: 'figureID',
@@ -106,7 +113,9 @@ B3 = draw2d.shape.basic.Rectangle.extend({
         //alert("test");
         figure = app.view.getFigure(values.figureID);
         figure.setName(values.name);
-        //figure.addEntity(form.debounceA.name,0);
+        // if (values.pot0Display == true) {
+        //   figure.addEntity(values.pot0, 0);
+        // }
         $(values.domID).closest(".ui-dialog-content").dialog("close");
         $(values.domID).attr("id", values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
         $('input[name="domID"]').val("#" + values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
@@ -128,6 +137,8 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       text: txt,
       stroke: 0,
       radius: 0,
+      width: 150,
+      height: 30,
       bgColor: new draw2d.util.Color(6, 135, 112),
       padding: {
         left: 10,
@@ -136,63 +147,19 @@ B3 = draw2d.shape.basic.Rectangle.extend({
         bottom: 5
       },
       fontColor: "#FFFFFF",
-      resizeable: true,
-      editor: new draw2d.ui.LabelEditor()
+      resizeable: false,
     });
 
     //        label.installEditor(new draw2d.ui.LabelEditor());
-    var input = label.createPort("input");
+    var trigger = label.createPort("input");
+    var setValue = label.createPort("input");
     var output = label.createPort("output");
 
-    input.setName("input_" + label.id);
-    output.setName("output_" + label.id);
+    trigger.setName("trigger");
+    setValue.setName("setValue");
+    output.setName("output");
 
     var _table = this;
-    label.on("contextmenu", function(emitter, event) {
-      $.contextMenu({
-        selector: 'body',
-        events: {
-          hide: function() {
-            $.contextMenu('destroy');
-          }
-        },
-        callback: $.proxy(function(key, options) {
-          switch (key) {
-            case "rename":
-              setTimeout(function() {
-                emitter.onDoubleClick();
-              }, 10);
-              break;
-            case "new":
-              setTimeout(function() {
-                _table.addEntity("_new_").onDoubleClick();
-              }, 10);
-              break;
-            case "delete":
-              // with undo/redo support
-              var cmd = new draw2d.command.CommandDelete(emitter);
-              emitter.getCanvas().getCommandStack().execute(cmd);
-            default:
-              break;
-          }
-
-        }, this),
-        x: event.x,
-        y: event.y,
-        items: {
-          "rename": {
-            name: "Rename"
-          },
-          "new": {
-            name: "New Entity"
-          },
-          "sep1": "---------",
-          "delete": {
-            name: "Delete"
-          }
-        }
-      });
-    });
 
     if ($.isNumeric(optionalIndex)) {
       this.add(label, new draw2d.layout.locator.BottomLocator(), optionalIndex + 1);
