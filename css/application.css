@@ -87,10 +87,10 @@ body {
 	display: block;
 	height: 64px;
 	margin: auto;
-	padding: 12px 24px 10px 24px;
+	padding: 9px 24px 10px 10px;
 	position: relative;
 	font-size: 30px;
-	font-weight: 100;
+	font-weight: 150;
 }
 
 button.gray,a.gray,input[type=submit].gray {
