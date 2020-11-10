@@ -19,8 +19,6 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       resizeable: false
     });
     this.add(this.classLabel, new draw2d.layout.locator.CenterLocator());
-
-    this.testObject = this;
     this.initParameterTable();
     /** Init IO
      *  This section is used to initialize the required IO for a board
@@ -84,10 +82,10 @@ B3 = draw2d.shape.basic.Rectangle.extend({
           type: 'string',
           title: 'Potentiometer 0 Value'
         },
-        // pot0Display: {
-        //   type: 'checkbox',
-        //   title: "Show on Canvas - Potentiometer 0"
-        // },
+        pot0Display: {
+          type: 'checkbox',
+          title: "Show on Canvas - Potentiometer 0"
+        },
         figureID: {
           type: 'hidden',
           title: 'figureID',
@@ -113,9 +111,9 @@ B3 = draw2d.shape.basic.Rectangle.extend({
         //alert("test");
         figure = app.view.getFigure(values.figureID);
         figure.setName(values.name);
-        // if (values.pot0Display == true) {
-        //   figure.addEntity(values.pot0, 0);
-        // }
+        if (values.pot0Display == true) {
+          figure.addEntity("Potentiometer 0 Value",values.pot0, 0);
+        }
         $(values.domID).closest(".ui-dialog-content").dialog("close");
         $(values.domID).attr("id", values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
         $('input[name="domID"]').val("#" + values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
@@ -132,23 +130,30 @@ B3 = draw2d.shape.basic.Rectangle.extend({
    * @param {String} txt the label to show
    * @param {Number} [optionalIndex] index where to insert the entity
    */
-  addEntity: function(txt, optionalIndex) {
+  addEntity: function(txt,value,optionalIndex) {
     var label = new draw2d.shape.basic.Label({
       text: txt,
       stroke: 0,
       radius: 0,
-      width: 150,
-      height: 30,
+      height: 50,
       bgColor: new draw2d.util.Color(6, 135, 112),
       padding: {
-        left: 10,
+        left: 50,
         top: 3,
-        right: 10,
+        right: 50,
         bottom: 5
       },
       fontColor: "#FFFFFF",
-      resizeable: false,
+      resizeable: true,
     });
+    classLabel = new draw2d.shape.basic.Label({
+      text: value,
+      stroke: 1,
+      radius: label.getRadius(),
+      padding: 5,
+      resizeable: false
+    });
+    label.add(classLabel, new draw2d.layout.locator.CenterLocator());
 
     //        label.installEditor(new draw2d.ui.LabelEditor());
     var trigger = label.createPort("input");
