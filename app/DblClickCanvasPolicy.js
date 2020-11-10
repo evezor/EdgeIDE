@@ -19,25 +19,17 @@ var DblClickCanvasPolicy = draw2d.policy.canvas.CanvasPolicy.extend({
     if (figure !== null) {
       $(function() {
 
-        temp = document.getElementsByTagName("template")[0];
-        table = temp.content.querySelector("div");
-        a = document.importNode(table, true);
         var board = figure.getRoot();
         if (board == null) { // getRoot returns null if the shape clicked is already the root node.
           board = figure;
         }
         name = board.getChildren().get(0).getText(); //Get the name of the shape from the form
-
         name = name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""); //
-        a.setAttribute("id", name);
-
-        document.body.appendChild(a);
-
-        form = document.getElementById(name).firstElementChild;
-        form.elements["name"].value = name;
-        form.elements["figureID"].value = board.getId();
-        form.elements["domID"].value = name;
-
+        //
+        // form = document.getElementById(name).firstElementChild;
+        // form.elements["name"].value = name;
+        // form.elements["figureID"].value = board.getId();
+        // form.elements["domID"].value = name;
 
         $("#" + name).dialog({
           position: [mouseX, mouseY]

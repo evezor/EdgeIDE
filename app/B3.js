@@ -17,6 +17,8 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     });
     this.add(this.classLabel, new draw2d.layout.locator.CenterLocator());
 
+    this.testObject = this;
+    this.initParameterTable();
     /** Init IO
      *  This section is used to initialize the required IO for a board
      *
@@ -51,6 +53,68 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     }), new draw2d.layout.locator.LeftLocator());
     pot0.setName("pot0");
   },
+  /**
+   * @method
+   * Initialize parameter table
+   *
+   * @param none
+   */
+
+  initParameterTable: function() {
+    temp = document.getElementsByTagName("template")[0];
+    table = temp.content.querySelector("form");
+    a = document.importNode(table, true);
+
+    name = this.classLabel.getText(); //Get the name of the shape from the form
+    name = name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""); //
+    a.setAttribute("id", name);
+    document.body.appendChild(a);
+    boardID = this.getId();
+    $("#" + name).jsonForm({
+      schema: {
+        name: {
+          type: 'string',
+          title: 'name',
+          required: 'true'
+        },
+        pot0: {
+          type: 'string',
+          title: 'pot0'
+        },
+        figureID: {
+          type: 'hidden',
+          title: 'figureID',
+        },
+        domID: {
+          type: 'hidden',
+          title: 'domID'
+        }
+      },
+      form: [
+        "*",
+        {
+          type: "submit",
+          title: "Save"
+        }
+      ],
+      value: {
+        name: name,
+        figureID: boardID,
+        domID: "#" + name
+      },
+      onSubmit: function(errors, values) {
+        //alert("test");
+        figure = app.view.getFigure(values.figureID);
+        figure.setName(values.name);
+        //figure.addEntity(form.debounceA.name,0);
+        $(values.domID).closest(".ui-dialog-content").dialog("close");
+        $(values.domID).attr("id", values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
+        $('input[name="domID"]').val("#" + values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
+      }
+    });
+
+  },
+
 
   /**
    * @method
@@ -64,7 +128,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       text: txt,
       stroke: 0,
       radius: 0,
-      bgColor:  new draw2d.util.Color(6,135,112),
+      bgColor: new draw2d.util.Color(6, 135, 112),
       padding: {
         left: 10,
         top: 3,
@@ -133,7 +197,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     if ($.isNumeric(optionalIndex)) {
       this.add(label, new draw2d.layout.locator.BottomLocator(), optionalIndex + 1);
     } else {
-      this.add(label,new draw2d.layout.locator.BottomLocator());
+      this.add(label, new draw2d.layout.locator.BottomLocator());
     }
 
     return label;
@@ -197,7 +261,5 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     this.classLabel.setPersistentAttributes(memento.label);
     this._super(memento.primary);
   }
-
-
 
 });
