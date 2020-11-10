@@ -1,3 +1,7 @@
+function myFunction(form){
+  alert("TEST");
+}
+
 function downloadToFile(content, filename, contentType) {
   const a = document.createElement('a');
   const file = new Blob([content], {

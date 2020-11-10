@@ -17,6 +17,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     });
     this.add(this.classLabel, new draw2d.layout.locator.CenterLocator());
 
+    this.testObject = this;
     this.initParameterTable();
     /** Init IO
      *  This section is used to initialize the required IO for a board
@@ -61,34 +62,54 @@ B3 = draw2d.shape.basic.Rectangle.extend({
 
   initParameterTable: function() {
     temp = document.getElementsByTagName("template")[0];
-    table = temp.content.querySelector("div");
+    table = temp.content.querySelector("form");
     a = document.importNode(table, true);
 
     name = this.classLabel.getText(); //Get the name of the shape from the form
     name = name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""); //
     a.setAttribute("id", name);
     document.body.appendChild(a);
+    boardID = this.getId();
     $("#" + name).jsonForm({
       schema: {
         name: {
           type: 'string',
-          title: 'name'
+          title: 'name',
+          required: 'true'
         },
-        debounce: {
+        pot0: {
           type: 'string',
-          title: 'debounceA'
+          title: 'pot0'
         },
         figureID: {
-          type: 'string',
-          title: 'figureID'
+          type: 'hidden',
+          title: 'figureID',
+        },
+        domID: {
+          type: 'hidden',
+          title: 'domID'
         }
       },
-      onSubmit: function(errors, values) {
-        if (errors) {
-          alert("Check for invalid parameters!");
-          return;
+      form: [
+        "*",
+        {
+          type: "submit",
+          title: "Save"
         }
-        this.paramHandler(values);
+      ],
+      value: {
+        name: name,
+        figureID: boardID,
+        domID: "#" + name
+      },
+      onSubmit: function(errors, values) {
+        //alert("test");
+        figure = app.view.getFigure(values.figureID);
+        figure.setName(values.name);
+        //figure.addEntity(form.debounceA.name,0);
+        $(values.domID).closest(".ui-dialog-content").dialog("close");
+        $(values.domID).attr("id", values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
+        $('input[name="domID"]').val("#" + values.name.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, ""));
       }
     });
 
@@ -239,19 +260,6 @@ B3 = draw2d.shape.basic.Rectangle.extend({
   setPersistentAttributes: function(memento) {
     this.classLabel.setPersistentAttributes(memento.label);
     this._super(memento.primary);
-  },
-  /**
-   * @method
-   *  handleParameterTable Saving
-   *
-   * @param values
-   */
-  paramHandler: function(values) {
-    alert("PING!");
-    figure = app.view.getFigure(values.figureID);
-    figure.setName(values.name);
-    //figure.addEntity(form.debounceA.name,0);
-    $(form).closest(".ui-dialog-content").dialog("close");
   }
 
 });
