@@ -105,7 +105,8 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       value: {
         name: name,
         figureID: boardID,
-        domID: "#" + name
+        domID: "#" + name,
+        pot0: "1234"
       },
       onSubmit: function(errors, values) {
         //alert("test");
@@ -138,9 +139,9 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       height: 50,
       bgColor: new draw2d.util.Color(6, 135, 112),
       padding: {
-        left: 50,
+        left: 20,
         top: 3,
-        right: 50,
+        right: 20,
         bottom: 5
       },
       fontColor: "#FFFFFF",
