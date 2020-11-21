@@ -214,8 +214,19 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     base = document.importNode(table, true);
     base.setAttribute("id", name);
     document.body.appendChild(base);
-    this.attachParam(template,base,".textParam");
-    this.attachParam(template,base,".submitButton");
+
+    var obj = this;
+    $.getJSON("../manifests/b3.json", function(data) {
+      params = data.params;
+      var i;
+      for (i = 0; i < params.length; i++) {
+        obj.attachParam(template, base, ".textParam", params[i].name, params[i].label);
+      }
+      submit = template.content.querySelector(".submitButton");
+      item = document.importNode(submit, true);
+      base.appendChild(item);
+    });
+
 
 
     form = document.getElementById(name);
@@ -234,10 +245,18 @@ B3 = draw2d.shape.basic.Rectangle.extend({
    * @param template
    * @param base
    * @param param
+   * @param name
+   * @param label
    */
-  attachParam: function(template, base, param) {
+  attachParam: function(template, base, param, name, label) {
     param = template.content.querySelector(param);
-    item = document.importNode(param,true);
+    item = document.importNode(param, true);
     base.appendChild(item);
+    document.getElementById("paramLabel").innerHTML = label;
+    document.getElementById("paramLabel").id = name + "Label";
+    document.getElementById("paramInput").name = name + "Input";
+    document.getElementById("paramInput").id = name + "Input";
+    document.getElementById("paramCheckbox").name = name + "Checkbox";
+    document.getElementById("paramCheckbox").id = name + "Checkbox";
   }
 });

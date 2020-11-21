@@ -109,9 +109,9 @@
       <input type="hidden" name="temp">
     </form>
     <div class="textParam">
-      <label for="debounceA">Debounce Button A (ms):</label><br>
-      <input type="text" name="debounceA">
-      <input type="checkbox" name="displayParamA">
+      <label id="paramLabel" for="debounceA">temp</label><br>
+      <input id="paramInput" class="param" type="text" name="temp">
+      <input id="paramCheckbox" class="displayParam" type="checkbox" name="temp">
       <br>
     </div>
     <input class="submitButton" type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">

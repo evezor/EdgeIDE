@@ -1,0 +1,11 @@
+{
+  "params": [{
+      "name": "debounceA",
+      "label": "Debounce Button A (ms)"
+    },
+    {
+      "name": "debounceB",
+      "label": "Debounce Button B (ms)"
+    }
+  ]
+}
