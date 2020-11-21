@@ -101,21 +101,20 @@
   </div>
 
   <template>
-    <div class="paramTable" title="Parameters">
-      <form>
-        <label for="name">Name:</label><br>
-        <input type="text" name="name"><br>
-        <label for="debounceA">Debounce Button A (ms):</label><br>
-        <input type="text" name="debounceA"><br>
-        <label for="debounceB">Debounce Button B (ms):</label><br>
-        <input type="text" name="debounceB">
-        <input type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">
-        <input type="hidden" name="figureID">
-        <input type="hidden" name="domID">
-        <input type="hidden" name="temp">
-      </form>
-
+    <form class="paramTable" title="Parameters">
+      <label for="name">Name:</label><br>
+      <input type="text" name="name"><br>
+      <input type="hidden" name="figureID">
+      <input type="hidden" name="domID">
+      <input type="hidden" name="temp">
+    </form>
+    <div class="textParam">
+      <label for="debounceA">Debounce Button A (ms):</label><br>
+      <input type="text" name="debounceA">
+      <input type="checkbox" name="displayParamA">
+      <br>
     </div>
+    <input class="submitButton" type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">
   </template>
 
 </body>
