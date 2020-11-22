@@ -258,5 +258,18 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     document.getElementById("paramInput").id = name + "Input";
     document.getElementById("paramCheckbox").name = name + "Checkbox";
     document.getElementById("paramCheckbox").id = name + "Checkbox";
+  },
+  /**
+   * @method
+   *  Show parameters in the IDE
+   *
+   * @param form
+   */
+  showParams: function(form,figure) {
+    //this.addEntity(form.debounceAInput.value,0);
+    $(form).children().filter(".textParam").children().filter("input:checkbox:checked").each(function(index,checkbox){
+      var value = $(this).siblings(".param")[0].value;
+      figure.addEntity(value,0);
+    });
   }
 });
