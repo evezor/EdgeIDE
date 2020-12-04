@@ -72,8 +72,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
         bottom: 5
       },
       fontColor: "#FFFFFF",
-      resizeable: true,
-      editor: new draw2d.ui.LabelEditor()
+      resizeable: false,
     });
 
     //        label.installEditor(new draw2d.ui.LabelEditor());
@@ -84,56 +83,12 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     output.setName("output_" + label.id);
 
     var _table = this;
-    label.on("contextmenu", function(emitter, event) {
-      $.contextMenu({
-        selector: 'body',
-        events: {
-          hide: function() {
-            $.contextMenu('destroy');
-          }
-        },
-        callback: $.proxy(function(key, options) {
-          switch (key) {
-            case "rename":
-              setTimeout(function() {
-                emitter.onDoubleClick();
-              }, 10);
-              break;
-            case "new":
-              setTimeout(function() {
-                _table.addEntity("_new_").onDoubleClick();
-              }, 10);
-              break;
-            case "delete":
-              // with undo/redo support
-              var cmd = new draw2d.command.CommandDelete(emitter);
-              emitter.getCanvas().getCommandStack().execute(cmd);
-            default:
-              break;
-          }
 
-        }, this),
-        x: event.x,
-        y: event.y,
-        items: {
-          "rename": {
-            name: "Rename"
-          },
-          "new": {
-            name: "New Entity"
-          },
-          "sep1": "---------",
-          "delete": {
-            name: "Delete"
-          }
-        }
-      });
-    });
 
     if ($.isNumeric(optionalIndex)) {
-      this.add(label, new draw2d.layout.locator.BottomLocator(), optionalIndex + 1);
+      this.add(label, new draw2d.layout.locator.BottomLocator(this.children.last()), optionalIndex + 1);
     } else {
-      this.add(label, new draw2d.layout.locator.BottomLocator());
+      this.add(label, new draw2d.layout.locator.BottomLocator(this.children.last()));
     }
 
     return label;
@@ -268,8 +223,8 @@ B3 = draw2d.shape.basic.Rectangle.extend({
   showParams: function(form,figure) {
     //this.addEntity(form.debounceAInput.value,0);
     $(form).children().filter(".textParam").children().filter("input:checkbox:checked").each(function(index,checkbox){
-      var value = $(this).siblings(".param")[0].value;
-      figure.addEntity(value,0);
+      var value = $(this).siblings(".paramLabel")[0].innerHTML;
+      figure.addEntity(value);
     });
   }
 });
