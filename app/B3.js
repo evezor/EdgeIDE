@@ -50,6 +50,14 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       text: "Pot 0",
     }), new draw2d.layout.locator.LeftLocator());
     pot0.setName("pot0");
+
+    /** Init ParameterTable
+     *  This section is used to initialize the parametertable
+     **/
+
+    this.paramTable = new draw2d.shape.layout.VerticalLayout();
+    this.add(this.paramTable, new draw2d.layout.locator.BottomLocator());
+
   },
 
   /**
@@ -67,7 +75,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       bgColor: new draw2d.util.Color(6, 135, 112),
       padding: {
         left: 10,
-        top: 3,
+        top: 5,
         right: 10,
         bottom: 5
       },
@@ -75,20 +83,22 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       resizeable: false,
     });
 
-    //        label.installEditor(new draw2d.ui.LabelEditor());
-    var input = label.createPort("input");
+    var setVal = label.createPort("input");
+    var trigger = label.createPort("input");
     var output = label.createPort("output");
 
-    input.setName("input_" + label.id);
+    setVal.setName("setVal_" + label.id);
+    trigger.setName("trigger_" + label.id);
     output.setName("output_" + label.id);
 
     var _table = this;
 
 
     if ($.isNumeric(optionalIndex)) {
-      this.add(label, new draw2d.layout.locator.BottomLocator(this.children.last()), optionalIndex + 1);
+      this.paramTable.add(label, new draw2d.layout.locator.BottomLocator(), optionalIndex);
     } else {
-      this.add(label, new draw2d.layout.locator.BottomLocator(this.children.last()));
+      this.paramTable.add(label, new draw2d.layout.locator.BottomLocator());
+      alert("PING");
     }
 
     return label;
@@ -100,10 +110,10 @@ B3 = draw2d.shape.basic.Rectangle.extend({
    * This method removes the entity without care of existing connections. Use
    * a draw2d.command.CommandDelete command if you want to delete the connections to this entity too
    *
-   * @param {Number} index the index of the entity to remove
+   * @param {object} parameter the entity to remove
    */
-  removeEntity: function(index) {
-    this.remove(this.children.get(index + 1).figure);
+  removeEntity: function(parameter) {
+    this.paramTable.remove(parameter);
   },
 
   /**
@@ -113,7 +123,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
    * @param {Number} index the index of the entity to return
    */
   getEntity: function(index) {
-    return this.children.get(index + 1).figure;
+    return this.paramTable.children.get(index).figure;
   },
 
   /**
@@ -175,7 +185,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       params = data.params;
       var i;
       for (i = 0; i < params.length; i++) {
-        obj.attachParam(template, base, ".textParam", params[i].name, params[i].label);
+        obj.attachParam(template, base, ".textParam", params[i].name, params[i].label, i);
       }
       submit = template.content.querySelector(".submitButton");
       item = document.importNode(submit, true);
@@ -202,8 +212,9 @@ B3 = draw2d.shape.basic.Rectangle.extend({
    * @param param
    * @param name
    * @param label
+   * @param index
    */
-  attachParam: function(template, base, param, name, label) {
+  attachParam: function(template, base, param, name, label, index) {
     param = template.content.querySelector(param);
     item = document.importNode(param, true);
     base.appendChild(item);
@@ -213,6 +224,8 @@ B3 = draw2d.shape.basic.Rectangle.extend({
     document.getElementById("paramInput").id = name + "Input";
     document.getElementById("paramCheckbox").name = name + "Checkbox";
     document.getElementById("paramCheckbox").id = name + "Checkbox";
+    document.getElementById("paramIndex").value = index;
+    document.getElementById("paramIndex").id = name + "Index";
   },
   /**
    * @method
@@ -220,11 +233,27 @@ B3 = draw2d.shape.basic.Rectangle.extend({
    *
    * @param form
    */
-  showParams: function(form,figure) {
+  showParams: function(form, figure) {
     //this.addEntity(form.debounceAInput.value,0);
-    $(form).children().filter(".textParam").children().filter("input:checkbox:checked").each(function(index,checkbox){
+    $(form).children().filter(".textParam").children().filter("input:checkbox").each(function(index, checkbox) {
       var value = $(this).siblings(".paramLabel")[0].innerHTML;
-      figure.addEntity(value);
+      var paramIndex = parseInt($(this).siblings(".paramIndex")[0].value);
+      paramTable = figure.getChildren().find(function(object) {
+        return object.cssClass == "draw2d_shape_layout_VerticalLayout";
+      });
+      parameter = paramTable.getChildren().find(function(figure) {
+        return figure.text === value;
+      });
+      if (checkbox.checked) {
+        if (parameter == null) {
+          figure.addEntity(value, paramIndex);
+        }
+      } else {
+        if (parameter != null) {
+          figure.removeEntity(parameter);
+        }
+      }
+
     });
   }
 });
