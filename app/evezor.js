@@ -1,6 +1,7 @@
 function paramHandler(form) {
-  var test = form.name.value;
-  app.view.getFigure(form.figureID.value).setName(form.name.value);
+  figure = app.view.getFigure(form.figureID.value);
+  figure.setName(form.name.value);
+  figure.showParams(form,figure);
   $(form).closest(".ui-dialog-content").dialog("close");
 }
 
