@@ -55,12 +55,27 @@ evezorIDE.Toolbar = Class.extend({
       var writer = new draw2d.io.json.Writer();
       writer.marshal(view, function(json) {
         // convert the json object into string
-        var jsonTxt = JSON.stringify(createExportObject(json),null,2);
+        var jsonTxt = JSON.stringify(createExportObject(json), null, 2);
         downloadToFile(jsonTxt, 'map.json', 'application/json');
 
 
       });
     }, this));
+
+    //Inject the Settings Button button
+
+    this.settingsButton = $("<input type='image' id=settings src='EvezorG.png' width='45' height='45'/></button>");
+    this.html.append(this.settingsButton);
+    this.settingsButton.click($.proxy(function() {
+      var element = document.getElementById("canvas");
+      element.classList.toggle("darkMode");
+      element.classList.toggle("canvas");
+      element = document.getElementById("side-nav");
+      element.classList.toggle("darkMode");
+      element.classList.toggle("side-nav");
+    }, this));
+
+
 
     this.disableButton(this.undoButton, true);
     this.disableButton(this.redoButton, true);

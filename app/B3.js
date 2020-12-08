@@ -55,7 +55,10 @@ B3 = draw2d.shape.basic.Rectangle.extend({
      *  This section is used to initialize the parametertable
      **/
 
-    this.paramTable = new draw2d.shape.layout.VerticalLayout();
+    this.paramTable = new draw2d.shape.layout.VerticalLayout({
+      stroke: 1,
+      radius: 4,
+    });
     this.add(this.paramTable, new draw2d.layout.locator.BottomLocator());
 
   },
@@ -80,9 +83,8 @@ B3 = draw2d.shape.basic.Rectangle.extend({
         bottom: 5
       },
       fontColor: "#FFFFFF",
-      resizeable: false,
+      resizeable: true,
     });
-
     var setVal = label.createPort("input");
     var trigger = label.createPort("input");
     var output = label.createPort("output");
@@ -100,7 +102,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
       this.paramTable.add(label, new draw2d.layout.locator.BottomLocator());
       alert("PING");
     }
-
+    label.setMinWidth(1000);
     return label;
   },
 
