@@ -1,0 +1,37 @@
+{
+  "functions": [{
+    "name": "buzzer0",
+    "label": "Buzzer",
+    "type": "input"
+  }, {
+    "name": "setColor",
+    "label": "Set Color",
+    "type": "input"
+  }],
+  "params": [{
+      "name": "white",
+      "label": "White",
+      "type": "input"
+    },
+    {
+      "name": "blue",
+      "label": "Blue",
+      "type": "input"
+    },
+    {
+      "name": "green",
+      "label": "Green",
+      "type": "input"
+    },
+    {
+      "name": "yellow",
+      "label": "Yellow",
+      "type": "input"
+    },
+    {
+      "name": "red",
+      "label": "Red",
+      "type": "input"
+    }
+  ]
+}

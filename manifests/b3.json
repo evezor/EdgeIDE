@@ -1,4 +1,30 @@
 {
+  "functions": [{
+      "name": "led0",
+      "label": "LED 0",
+      "type": "input"
+    },
+    {
+      "name": "led1",
+      "label": "LED 1",
+      "type": "input"
+    },
+    {
+      "name": "button0",
+      "label": "Button 0",
+      "type": "output"
+    },
+    {
+      "name": "button1",
+      "label": "Button 1",
+      "type": "output"
+    },
+    {
+      "name": "pot0",
+      "label": "Pot 0",
+      "type": "output"
+    }
+  ],
   "params": [{
       "name": "debounceA",
       "label": "Debounce Button A (ms)"

@@ -1,0 +1,44 @@
+{
+  "functions": [{
+      "name": "relay1",
+      "label": "Relay 1",
+      "type": "input"
+    },
+    {
+      "name": "relay2",
+      "label": "Relay 2",
+      "type": "input"
+    },
+    {
+      "name": "relay3",
+      "label": "Relay 3",
+      "type": "input"
+    },
+    {
+      "name": "relay4",
+      "label": "Relay 4",
+      "type": "input"
+    },
+    {
+      "name": "button1",
+      "label": "Button 1",
+      "type": "output"
+    },
+    {
+      "name": "button2",
+      "label": "Button 2",
+      "type": "output"
+    },
+    {
+      "name": "button3",
+      "label": "Button 3",
+      "type": "output"
+    },
+    {
+      "name": "button4",
+      "label": "Button 4",
+      "type": "output"
+    }
+  ],
+  "params": []
+}
