@@ -22,9 +22,10 @@ evezorIDE.View = draw2d.Canvas.extend({
    * @private
    **/
   onDrop: function(droppedDomNode, x, y, shiftKey, ctrlKey) {
-    var type = $(droppedDomNode).data("shape");
+    var boardClass = $(droppedDomNode).data("class");
+    var type = $(droppedDomNode).data("type");
     //alert(type);
-    var figure = eval("new " + type + "({ width: 200, height: 100,resizeable:false })");
+    var figure = eval("new " + boardClass + "({ width: 200, height: 100,resizeable:false},\""+type+"\")");
 
   // create a command for the undo/redo support
   var command = new draw2d.command.CommandAdd(this, figure, x, y);
