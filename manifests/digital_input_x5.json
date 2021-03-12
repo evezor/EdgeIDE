@@ -1,0 +1,53 @@
+{
+  "functions": [{
+      "name": "input_1",
+      "label": "Input 1",
+      "type": "input"
+    },
+    {
+      "name": "input_2",
+      "label": "Input 2",
+      "type": "input"
+    },
+    {
+      "name": "input_3",
+      "label": "Input 3",
+      "type": "input"
+    },
+    {
+      "name": "input_4",
+      "label": "Input 4",
+      "type": "input"
+    },
+    {
+      "name": "input_5",
+      "label": "Input 5",
+      "type": "input"
+    }
+  ],
+  "params": [{
+      "name": "input_1_debounce",
+      "label": "Input 1 Debounce (ms)"
+    },
+    {
+      "name": "input_2_debounce",
+      "label": "Input 2 Debounce (ms)"
+    },
+    {
+      "name": "input_3_debounce",
+      "label": "Input 3 Debounce (ms)"
+    },
+    {
+      "name": "input_4_debounce",
+      "label": "Input 4 Debounce (ms)"
+    },
+    {
+      "name": "input_5_debounce",
+      "label": "Input 5 Debounce (ms)"
+    },
+    {
+      "name": "inactivity_timeout",
+      "label": "Inactivity_timeout"
+    }
+  ]
+}

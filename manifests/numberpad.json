@@ -1,0 +1,13 @@
+{
+  "functions": [{
+      "name": "keypress",
+      "label": "Key Pressed",
+      "type": "output"
+    }
+  ],
+  "params": [{
+      "name": "debounce",
+      "label": "Debounce (ms)"
+    }
+  ]
+}

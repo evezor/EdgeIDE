@@ -1,0 +1,78 @@
+{
+  "functions": [{
+      "name": "position",
+      "label": "POSITION",
+      "type": "input"
+    },
+    {
+      "name": "offset",
+      "label": "Offset",
+      "type": "input"
+    },
+    {
+      "name": "go_home",
+      "label": "Go Home",
+      "type": "input"
+    },
+    {
+      "name": "set_speed",
+      "label": "Set Speed",
+      "type": "input"
+    },
+    {
+      "name": "in_motion",
+      "label": "In Motion",
+      "type": "output"
+    },
+    {
+      "name": "is_homed",
+      "label": "Is Homed",
+      "type": "output"
+    },
+    {
+      "name": "motor_enabled",
+      "label": "Motor Enabled",
+      "type": "output"
+    },
+    {
+      "name": "low_limit_switch",
+      "label": "Low Limit Switch",
+      "type": "output"
+    },
+    {
+      "name": "high_limit_switch",
+      "label": "High Limit Switch",
+      "type": "output"
+    },
+    {
+      "name": "fault",
+      "label": "Fault",
+      "type": "output"
+    }
+  ],
+  "params": [{
+      "name": "set_speed",
+      "label": "Set Speed"
+    },
+    {
+      "name": "set_acceleration",
+      "label": "Set Acceleration"
+    },
+    {
+      "name": "max_length",
+      "label": "Max Length"
+    },
+    {
+      "name": "set_positive_dir",
+      "label": "Set Positive Dir"
+    },
+    {
+      "name": "steps_per_mm",
+      "label": "Steps per mm"
+    },
+    {
+      "name": "inactivity_timeout",
+      "label": "Inactivity_timeout"
+    }
+  ]
+}
