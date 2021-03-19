@@ -3,7 +3,7 @@ B3 = draw2d.shape.basic.Rectangle.extend({
   NAME: "B3",
   init: function(attr, boardType) {
     this._super($.extend({
-      bgColor: "#999999"
+      bgColor: "#999999",
     }, attr));
 
     this.classLabel = new draw2d.shape.basic.Label({
