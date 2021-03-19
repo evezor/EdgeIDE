@@ -1,6 +1,6 @@
-B3 = draw2d.shape.basic.Rectangle.extend({
+b3 = draw2d.shape.basic.Rectangle.extend({
 
-  NAME: "B3",
+  NAME: "b3",
   init: function(attr, boardType) {
     this._super($.extend({
       bgColor: "#999999",
