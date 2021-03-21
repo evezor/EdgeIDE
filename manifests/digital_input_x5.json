@@ -2,27 +2,27 @@
   "functions": [{
       "name": "input_1",
       "label": "Input 1",
-      "type": "input"
+      "type": "output"
     },
     {
       "name": "input_2",
       "label": "Input 2",
-      "type": "input"
+      "type": "output"
     },
     {
       "name": "input_3",
       "label": "Input 3",
-      "type": "input"
+      "type": "output"
     },
     {
       "name": "input_4",
       "label": "Input 4",
-      "type": "input"
+      "type": "output"
     },
     {
       "name": "input_5",
       "label": "Input 5",
-      "type": "input"
+      "type": "output"
     }
   ],
   "params": [{

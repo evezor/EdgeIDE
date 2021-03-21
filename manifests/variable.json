@@ -1,0 +1,15 @@
+{
+  "functions": [{
+      "name": "trigger",
+      "label": "T",
+      "type": "input"
+    },
+    {
+      "name": "output",
+      "label": "Output",
+      "type": "output"
+    }
+  ],
+  "params": [
+  ]
+}

@@ -2,12 +2,12 @@
   "functions": [{
       "name": "button_a",
       "label": "Button A",
-      "type": "input"
+      "type": "output"
     },
     {
       "name": "button_b",
       "label": "Button B",
-      "type": "input"
+      "type": "output"
     },
     {
       "name": "temperature",
@@ -22,6 +22,11 @@
     {
       "name": "pressure",
       "label": "Pressure",
+      "type": "output"
+    },
+    {
+      "name": "luminosity",
+      "label": "Luminosity",
       "type": "output"
     }
   ],
