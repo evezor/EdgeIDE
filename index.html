@@ -88,7 +88,7 @@
   <div id="toolbar" class="navbar-default">
   </div>
 
-  <img id="logo" src="logo.png"/>
+  <img id="logo" src="logo.png" />
   <div id="side-nav" class="side-nav">
     <div id="layer_elements"></div>
     <div id="layer_header" class="highlight panetitle blackgradient">
@@ -119,6 +119,13 @@
       <br>
     </div>
     <input class="submitButton" type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">
+  </template>
+
+  <template>
+    <form class="settingsTable" title="Settings">
+      <input id="darkMode" type="checkbox" name="darkMode" onclick="settingsChange()">
+      <label id="darkModeLabel" title="Dark Mode" class="label" for="darkMode">Dark Mode</label>
+    </form>
   </template>
 
 </body>

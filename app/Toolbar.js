@@ -67,12 +67,24 @@ evezorIDE.Toolbar = Class.extend({
     this.settingsButton = $("<input type='image' id=settings src='EvezorG.png' width='45' height='45'/></button>");
     this.html.append(this.settingsButton);
     this.settingsButton.click($.proxy(function() {
-      var element = document.getElementById("canvas");
-      element.classList.toggle("darkMode");
-      element.classList.toggle("canvas");
-      element = document.getElementById("side-nav");
-      element.classList.toggle("darkMode");
-      element.classList.toggle("side-nav");
+      //Attempt to get the element using document.getElementById
+      var element = document.getElementById("settingsTable");
+
+      //If it isn't "undefined" and it isn't "null", then it exists.
+      if (typeof(element) != 'undefined' && element != null) {
+        //do nothing
+      } else {
+        template = document.getElementsByTagName("template")[1];
+        table = template.content.querySelector(".settingsTable");
+        base = document.importNode(table, true);
+        base.setAttribute("id", "settingsTable");
+        document.body.appendChild(base);
+      }
+      $("#settingsTable").dialog({
+        close: function(event, ui) {
+          settingsChange();
+        }
+      });
     }, this));
 
 

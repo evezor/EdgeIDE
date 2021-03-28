@@ -169,25 +169,32 @@ b3 = draw2d.shape.basic.Rectangle.extend({
    * @param mouseY
    */
   generateParameterTable: function(board, name, mouseX, mouseY) {
-    template = document.getElementsByTagName("template")[0];
-    table = template.content.querySelector(".paramTable");
-    base = document.importNode(table, true);
-    base.setAttribute("id", name);
-    document.body.appendChild(base);
 
-    var obj = this;
-    $.getJSON("../manifests/"+this.boardType+".json", function(data) {
-      params = data.params;
-      var i;
-      for (i = 0; i < params.length; i++) {
-        obj.attachParam(template, base, ".textParam", params[i].name, params[i].label, i);
-      }
-      submit = template.content.querySelector(".submitButton");
-      item = document.importNode(submit, true);
-      base.appendChild(item);
-    });
+    //Attempt to get the element using document.getElementById
+    var element = document.getElementById(name);
 
+    //If it isn't "undefined" and it isn't "null", then it exists.
+    if (typeof(element) != 'undefined' && element != null) {
+      //do nothing
+    } else {
+      template = document.getElementsByTagName("template")[0];
+      table = template.content.querySelector(".paramTable");
+      base = document.importNode(table, true);
+      base.setAttribute("id", name);
+      document.body.appendChild(base);
 
+      var obj = this;
+      $.getJSON("../manifests/"+this.boardType+".json", function(data) {
+        params = data.params;
+        var i;
+        for (i = 0; i < params.length; i++) {
+          obj.attachParam(template, base, ".textParam", params[i].name, params[i].label, i);
+        }
+        submit = template.content.querySelector(".submitButton");
+        item = document.importNode(submit, true);
+        base.appendChild(item);
+      });
+    }
 
     form = document.getElementById(name);
     form.elements["name"].value = name;
