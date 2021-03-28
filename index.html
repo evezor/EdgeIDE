@@ -55,7 +55,6 @@
 
     document.addEventListener("DOMContentLoaded", function() {
 
-      var routerToUse = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
       app = new evezorIDE.Application();
       app.view.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
         createConnection: function() {
@@ -64,7 +63,7 @@
             outlineStroke: 1,
             outlineColor: "#303030",
             color: "91B93E",
-            router: routerToUse
+            router: defaultRouter
           });
           return connection;
         }
@@ -124,7 +123,10 @@
   <template>
     <form class="settingsTable" title="Settings">
       <input id="darkMode" type="checkbox" name="darkMode" onclick="settingsChange()">
-      <label id="darkModeLabel" title="Dark Mode" class="label" for="darkMode">Dark Mode</label>
+      <label id="darkModeLabel" class="label" for="darkMode">Dark Mode</label>
+      <br>
+      <input id="lineMode" type="checkbox" name="lineMode" onclick="settingsChange()">
+      <label id="lineModeLabel"class="label" for="lineMode">Spline Connections</label>
     </form>
   </template>
 

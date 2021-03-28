@@ -58,9 +58,17 @@ function createExportObject(json) {
 function settingsChange() {
   $("#settingsTable").children().filter("input:checkbox").each(function(index, checkbox) {
     if (checkbox.checked) {
-      darkMode(true);
+      if (checkbox.id == "darkMode") {
+        darkMode(true);
+      } else if (checkbox.id == "lineMode") {
+        changeRouter("draw2d.layout.connection.SplineConnectionRouter");
+      }
     } else {
-      darkMode(false);
+      if (checkbox.id == "darkMode") {
+        darkMode(false);
+      } else if (checkbox.id == "lineMode") {
+        changeRouter("draw2d.layout.connection.InteractiveManhattanConnectionRouter")
+      }
     }
   });
 }
@@ -81,4 +89,14 @@ function darkMode(darkModeOn) {
     element.classList.remove("darkMode");
     element.classList.add("side-nav");
   }
+}
+
+function changeRouter(routerName) {
+  var defaultRouterClassName = routerName;
+  app.setDefaultRouterClassName(defaultRouterClassName);
+  var router = eval("new " + defaultRouterClassName + "()");
+
+  app.view.getLines().each(function(i, line) {
+    line.setRouter(router);
+  });
 }
