@@ -1,6 +1,9 @@
 function paramHandler(form) {
   figure = app.view.getFigure(form.figureID.value);
   figure.setName(form.name.value);
+  figure.attr({
+    "bgColor": form.color.value
+  });
   figure.showParams(form, figure);
   $(form).closest(".ui-dialog-content").dialog("close");
 }
