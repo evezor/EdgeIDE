@@ -1,7 +1,10 @@
 function paramHandler(form) {
   figure = app.view.getFigure(form.figureID.value);
   figure.setName(form.name.value);
-  figure.showParams(form,figure);
+  figure.attr({
+    "bgColor": form.color.value
+  });
+  figure.showParams(form, figure);
   $(form).closest(".ui-dialog-content").dialog("close");
 }
 
@@ -53,4 +56,50 @@ function createExportObject(json) {
     }
   }
   return output;
+}
+
+function settingsChange() {
+  $("#settingsTable").children().filter("input:checkbox").each(function(index, checkbox) {
+    if (checkbox.checked) {
+      if (checkbox.id == "darkMode") {
+        darkMode(true);
+      } else if (checkbox.id == "lineMode") {
+        changeRouter("draw2d.layout.connection.SplineConnectionRouter");
+      }
+    } else {
+      if (checkbox.id == "darkMode") {
+        darkMode(false);
+      } else if (checkbox.id == "lineMode") {
+        changeRouter("draw2d.layout.connection.InteractiveManhattanConnectionRouter")
+      }
+    }
+  });
+}
+
+function darkMode(darkModeOn) {
+  if (darkModeOn) {
+    var element = document.getElementById("canvas");
+    element.classList.add("darkMode");
+    element.classList.remove("canvas");
+    element = document.getElementById("side-nav");
+    element.classList.add("darkMode");
+    element.classList.remove("side-nav");
+  } else {
+    var element = document.getElementById("canvas");
+    element.classList.remove("darkMode");
+    element.classList.add("canvas");
+    element = document.getElementById("side-nav");
+    element.classList.remove("darkMode");
+    element.classList.add("side-nav");
+  }
+}
+
+function changeRouter(routerName) {
+  var defaultRouterClassName = routerName;
+  app.setDefaultRouterClassName(defaultRouterClassName);
+  var router = eval("new " + defaultRouterClassName + "()");
+
+  app.view.getLines().each(function(i, line) {
+    line.setRouter(router);
+  });
 }

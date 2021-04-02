@@ -23,7 +23,7 @@
   <script src="./app/DblClickCanvasPolicy.js"></script>
 
 
-  <script src="./app/B3.js"></script>
+  <script src="./app/b3.js"></script>
   <script src="./app/Joypad.js"></script>
   <script src="./app/evezor.js"></script>
 
@@ -55,8 +55,8 @@
 
     document.addEventListener("DOMContentLoaded", function() {
 
-      var routerToUse = new draw2d.layout.connection.InteractiveManhattanConnectionRouter();
       app = new evezorIDE.Application();
+      app.setDefaultRouterClassName("draw2d.layout.connection.InteractiveManhattanConnectionRouter");
       app.view.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
         createConnection: function() {
           var connection = new draw2d.Connection({
@@ -64,7 +64,7 @@
             outlineStroke: 1,
             outlineColor: "#303030",
             color: "91B93E",
-            router: routerToUse
+            router: defaultRouter
           });
           return connection;
         }
@@ -88,7 +88,7 @@
   <div id="toolbar" class="navbar-default">
   </div>
 
-  <img id="logo" src="logo.png"/>
+  <img id="logo" src="logo.png" />
   <div id="side-nav" class="side-nav">
     <div id="layer_elements"></div>
     <div id="layer_header" class="highlight panetitle blackgradient">
@@ -116,7 +116,8 @@
   <template>
     <form class="paramTable" title="Parameters">
       <label for="name">Name:</label><br>
-      <input type="text" name="name"><br>
+      <input type="text" name="name">
+      <input type="color" name="color" value="#999999"><br>
       <input type="hidden" name="figureID">
       <input type="hidden" name="domID">
       <input type="hidden" name="temp">
@@ -129,6 +130,16 @@
       <br>
     </div>
     <input class="submitButton" type="button" NAME="submitButton" Value="Save" onClick="paramHandler(this.form)">
+  </template>
+
+  <template>
+    <form class="settingsTable" title="Settings">
+      <input id="darkMode" type="checkbox" name="darkMode" onclick="settingsChange()">
+      <label id="darkModeLabel" class="label" for="darkMode">Dark Mode</label>
+      <br>
+      <input id="lineMode" type="checkbox" name="lineMode" onclick="settingsChange()">
+      <label id="lineModeLabel" class="label" for="lineMode">Spline Connections</label>
+    </form>
   </template>
 
 </body>
