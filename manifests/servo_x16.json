@@ -1,0 +1,159 @@
+{
+  "functions": [{
+      "name": "button_a",
+      "label": "Button A",
+      "type": "output"
+    },
+    {
+      "name": "button_b",
+      "label": "Button B",
+      "type": "output"
+    },
+    {
+      "name": "dpad_up",
+      "label": "UP",
+      "type": "output"
+    },
+    {
+      "name": "dpad_down",
+      "label": "DOWN",
+      "type": "output"
+    },
+    {
+      "name": "dpad_left",
+      "label": "LEFT",
+      "type": "output"
+    },
+    {
+      "name": "dpad_right",
+      "label": "RIGHT",
+      "type": "output"
+    },
+    {
+      "name": "dpad_push",
+      "label": "PUSH",
+      "type": "output"
+    }
+  ],
+  "params": [{
+      "name": "buttons_debounce",
+      "label": "Buttons Debounce (ms)"
+    },
+    {
+      "name": "enable_servo_0",
+      "label": "Servo 0 Enable"
+    },
+    {
+      "name": "position_servo_0",
+      "label": "Servo 0 Position"
+    },
+    {
+      "name": "enable_servo_1",
+      "label": "Servo 1 Enable"
+    },
+    {
+      "name": "position_servo_1",
+      "label": "Servo 2 Position"
+    },
+    {
+      "name": "enable_servo_2",
+      "label": "Servo 2 Enable"
+    },
+    {
+      "name": "position_servo_3",
+      "label": "Servo 3 Position"
+    },
+    {
+      "name": "enable_servo_4",
+      "label": "Servo 4 Enable"
+    },
+    {
+      "name": "position_servo_4",
+      "label": "Servo 4 Position"
+    },
+    {
+      "name": "enable_servo_5",
+      "label": "Servo 5 Enable"
+    },
+    {
+      "name": "position_servo_5",
+      "label": "Servo 5 Position"
+    },
+    {
+      "name": "enable_servo_6",
+      "label": "Servo 6 Enable"
+    },
+    {
+      "name": "position_servo_6",
+      "label": "Servo 6 Position"
+    },
+    {
+      "name": "enable_servo_7",
+      "label": "Servo 7 Enable"
+    },
+    {
+      "name": "position_servo_7",
+      "label": "Servo 7 Position"
+    },
+    {
+      "name": "enable_servo_8",
+      "label": "Servo 8 Enable"
+    },
+    {
+      "name": "position_servo_9",
+      "label": "Servo 9 Position"
+    },
+    {
+      "name": "enable_servo_10",
+      "label": "Servo 10 Enable"
+    },
+    {
+      "name": "position_servo_10",
+      "label": "Servo 10 Position"
+    },
+    {
+      "name": "enable_servo_11",
+      "label": "Servo 11 Enable"
+    },
+    {
+      "name": "position_servo_11",
+      "label": "Servo 11 Position"
+    },
+    {
+      "name": "enable_servo_12",
+      "label": "Servo 12 Enable"
+    },
+    {
+      "name": "position_servo_12",
+      "label": "Servo 12 Position"
+    },
+    {
+      "name": "enable_servo_13",
+      "label": "Servo 13 Enable"
+    },
+    {
+      "name": "position_servo_13",
+      "label": "Servo 13 Position"
+    },
+    {
+      "name": "enable_servo_14",
+      "label": "Servo 14 Enable"
+    },
+    {
+      "name": "position_servo_14",
+      "label": "Servo 14 Position"
+    },
+    {
+      "name": "enable_servo_15",
+      "label": "Servo 15 Enable"
+    },
+    {
+      "name": "position_servo_15",
+      "label": "Servo 15 Position"
+    },
+    {
+      "name": "disable_all",
+      "label": "Disable All"
+    }
+  ]
+}

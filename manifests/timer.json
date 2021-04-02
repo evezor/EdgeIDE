@@ -1,0 +1,20 @@
+{
+  "functions": [{
+      "name": "trigger",
+      "label": "T",
+      "type": "input"
+    },
+    {
+        "name": "the_time",
+        "label": "Timer Time",
+        "type": "input"
+      },
+    {
+      "name": "output",
+      "label": "Output",
+      "type": "output"
+    }
+  ],
+  "params": [
+  ]
+}

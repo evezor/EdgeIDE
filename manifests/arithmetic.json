@@ -1,0 +1,45 @@
+{
+  "functions": [{
+      "name": "trigger",
+      "label": "T",
+      "type": "input"
+    },
+    {
+      "name": "input",
+      "label": "INPUT",
+      "type": "input"
+    },
+    {
+      "name": "addition",
+      "label": "+",
+      "type": "input"
+    },
+    {
+      "name": "subtraction",
+      "label": "-",
+      "type": "input"
+    },
+    {
+      "name": "multiplication",
+      "label": "x",
+      "type": "input"
+    },
+    {
+      "name": "division",
+      "label": "/",
+      "type": "input"
+    },
+    {
+      "name": "modulo",
+      "label": "%",
+      "type": "input"
+    },
+    {
+      "name": "output",
+      "label": "Output",
+      "type": "output"
+    }
+  ],
+  "params": [
+  ]
+}

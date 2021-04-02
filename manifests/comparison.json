@@ -1,0 +1,50 @@
+{
+  "functions": [{
+      "name": "trigger",
+      "label": "T",
+      "type": "input"
+    },
+    {
+      "name": "input",
+      "label": "INPUT",
+      "type": "input"
+    },
+    {
+      "name": "greater_than",
+      "label": ">",
+      "type": "input"
+    },
+    {
+      "name": "greater_than_or_equal",
+      "label": ">=",
+      "type": "input"
+    },
+    {
+      "name": "less_than",
+      "label": "<",
+      "type": "input"
+    },
+    {
+      "name": "less_than_or_equal",
+      "label": "<=",
+      "type": "input"
+    },
+    {
+      "name": "equal",
+      "label": "=",
+      "type": "input"
+    },
+    {
+      "name": "not_equal",
+      "label": "!=",
+      "type": "input"
+    },
+    {
+      "name": "output",
+      "label": "Output",
+      "type": "output"
+    }
+  ],
+  "params": [
+  ]
+}
