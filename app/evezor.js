@@ -34,7 +34,8 @@ function createExportObject(json) {
       id = json[i].primary.id;
       rolodex[id] = name;
       output.boards[name] = {};
-      output.boards[name].model = json[i].primary.type;
+      debugger;
+      output.boards[name].model = json[i].primary.userData.boardType;
       output.boards[name].inputs = [];
       output.boards[name].outputs = [];
       output.boards[name].parameters = [];

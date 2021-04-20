@@ -22,6 +22,8 @@ b3 = draw2d.shape.basic.Rectangle.extend({
      *
      **/
     this.boardType = boardType;
+    var userData = {};
+    userData.boardType = boardType;
     var obj = this;
     $.getJSON("../manifests/" + boardType + ".json", function(data) {
       inputs = data.inputs;
@@ -68,7 +70,7 @@ b3 = draw2d.shape.basic.Rectangle.extend({
       radius: 4,
     });
     this.add(this.paramTable, new draw2d.layout.locator.BottomLocator());
-
+    this.setUserData(userData);
   },
 
   /**
