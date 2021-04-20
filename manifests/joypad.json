@@ -1,0 +1,241 @@
+{
+  "model": "joypad",
+  "main": "edge",
+  "driver": "Joypad",
+  "init": "init",
+  "parameters": [
+    {
+      "name": "joy_sw",
+      "type": "button",
+      "pin": "e0",
+      "old": null
+    },
+    {
+      "name": "d_up",
+      "type": "button",
+      "pin": "e1",
+      "old": null
+    },
+    {
+      "name": "d_right",
+      "type": "button",
+      "pin": "e2",
+      "old": null
+    },
+    {
+      "name": "d_down",
+      "type": "button",
+      "pin": "d1",
+      "old": null
+    },
+    {
+      "name": "d_push",
+      "type": "button",
+      "pin": "d0",
+      "old": null
+    },
+    {
+      "name": "d_left",
+      "type": "button",
+      "pin": "e3",
+      "old": null
+    },
+    {
+      "name": "start",
+      "type": "button",
+      "pin": "e5",
+      "old": null
+    },
+    {
+      "name": "select",
+      "type": "button",
+      "pin": "e6",
+      "old": null
+    },
+    {
+      "name": "function",
+      "type": "button",
+      "pin": "d5",
+      "old": null
+    },
+    {
+      "name": "red_but",
+      "type": "button",
+      "pin": "e8",
+      "old": null
+    },
+    {
+      "name": "grn_but",
+      "type": "button",
+      "pin": "e11",
+      "old": null
+    },
+    {
+      "name": "blu_but",
+      "type": "button",
+      "pin": "e13",
+      "old": null
+    },
+    {
+      "name": "yel_but",
+      "type": "button",
+      "pin": "e15",
+      "old": null
+    },
+    {
+      "name": "joy_x",
+      "type": "adc",
+      "pin": "a0",
+      "old": null,
+      "noise": 20
+    },
+    {
+      "name": "joy_y",
+      "type": "adc",
+      "pin": "a1",
+      "old": null,
+      "noise": 20
+    },
+    {
+      "name": "red_but_led",
+      "type": "led",
+      "pin": "e9",
+      "value": 0,
+      "dirty": true
+    },
+    {
+      "name": "grn_but_led",
+      "type": "led",
+      "pin": "e10",
+      "value": 0,
+      "dirty": true
+    },
+    {
+      "name": "blu_but_led",
+      "type": "led",
+      "pin": "e12",
+      "value": 0,
+      "dirty": true
+    },
+    {
+      "name": "yel_but_led",
+      "type": "led",
+      "pin": "e14",
+      "value": 0,
+      "dirty": true
+    },
+    {
+      "name": "hbt_led",
+      "type": "led",
+      "pin": "d13",
+      "value": 0,
+      "dirty": true
+    },
+    {
+      "name": "buzzer",
+      "type": "pwm",
+      "pin": "a2",
+      "value": 0,
+      "dirty": true
+    },
+    {
+      "name": "neo_status",
+      "type": "neo",
+      "pin": "d8",
+      "value": 0,
+      "dirty": false
+    },
+    {
+      "name": "neo_strip",
+      "type": "neo",
+      "pin": "e4",
+      "value": 0,
+      "dirty": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "joy_sw"
+    },
+    {
+      "name": "d_up"
+    },
+    {
+      "name": "d_right"
+    },
+    {
+      "name": "d_down"
+    },
+    {
+      "name": "d_push"
+    },
+    {
+      "name": "d_left"
+    },
+    {
+      "name": "start"
+    },
+    {
+      "name": "select"
+    },
+    {
+      "name": "function"
+    },
+    {
+      "name": "red_but"
+    },
+    {
+      "name": "grn_but"
+    },
+    {
+      "name": "blu_but"
+    },
+    {
+      "name": "yel_but"
+    },
+    {
+      "name": "joy_x",
+      "range": {
+        "low": 0,
+        "high": 4096
+      }
+    },
+    {
+      "name": "joy_y",
+      "range": {
+        "low": 0,
+        "high": 4096
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "name": "red_but_led"
+    },
+    {
+      "name": "grn_but_led"
+    },
+    {
+      "name": "blu_but_led"
+    },
+    {
+      "name": "yel_but_led"
+    },
+    {
+      "name": "hbt_led"
+    },
+    {
+      "name": "buzzer",
+      "range": {
+        "low": 0,
+        "high": 4096
+      }
+    },
+    {
+      "name": "neo_status"
+    },
+    {
+      "name": "neo_strip"
+    }
+  ]
+}

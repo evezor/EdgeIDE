@@ -1,0 +1,35 @@
+{
+  "info": {
+    "model": "7 segment display",
+    "main": "edge",
+    "driver": "Seven",
+    "init": "init"
+  },
+  "inputs": [
+  ],
+
+  "outputs": [
+      { "name": "digits_0" },
+      { "name": "digits_1" }
+  ],
+
+  "parameters": [
+   {
+      "name": "digits_0",
+      "type": "7seg",
+      "value": 0,
+      "pin": "",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    },
+    {
+      "name": "digits_1",
+      "type": "7seg",
+      "value": 0,
+      "pin": "",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    }
+
+  ]
+}

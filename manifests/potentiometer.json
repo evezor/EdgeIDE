@@ -1,0 +1,92 @@
+{
+  "info": {
+    "model": "Potentiometer",
+    "main": "edge",
+    "driver": "Potentiometer",
+    "init": "init"
+  },
+  "inputs": [
+    { "name": "button_a" },
+    { "name": "button_b" },
+    { "name": "pot_a",
+      "range": {
+        "low": 0,
+        "high": 4095
+      }
+    },
+    { "name": "pot_b",
+      "range": {
+        "low": 0,
+        "high": 4095
+        }
+    }
+  ],
+
+  "outputs": [
+      { "name": "graph_a" ,
+       "range": {
+        "low": 0,
+        "high": 7
+        }
+      },
+      { "name": "graph_b" ,
+       "range": {
+        "low": 0,
+        "high": 7
+        }
+      }
+  ],
+
+  "parameters": [{
+      "name": "button_a",
+      "type": "in",
+      "pin": "E13",
+      "old": 0
+    },
+    {
+      "name": "button_b",
+      "type": "in",
+      "pin": "E12",
+      "old": 0
+    },
+    {
+      "name": "pot_a",
+      "type": "adc",
+      "pin": "A1",
+      "old": null,
+      "range": {
+        "low": 0,
+        "high": 4096
+      },
+      "noise": 20
+    },
+     {
+      "name": "pot_b",
+      "type": "adc",
+      "pin": "A0",
+      "old": null,
+      "range": {
+        "low": 0,
+        "high": 4096
+      },
+      "noise": 20
+    },
+   {
+      "name": "graph_a",
+      "type": "graph",
+      "value": 0,
+      "pin": "E4",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    },
+    {
+      "name": "graph_b",
+      "type": "graph",
+      "value": 0,
+      "pin": "E3",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    }
+
+  ]
+}
