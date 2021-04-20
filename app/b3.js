@@ -29,29 +29,29 @@ b3 = draw2d.shape.basic.Rectangle.extend({
       io = {};
       var i;
       for (i = 0; i < inputs.length; i++) {
-        io[inputs[i].name] = obj.createPort("input");
+        io[inputs[i].name] = obj.createPort("output");
         if ('label' in inputs[i]) {
           io[inputs[i].name].add(new draw2d.shape.basic.Label({
             text: inputs[i].label,
-          }), new draw2d.layout.locator.RightLocator());
+          }), new draw2d.layout.locator.LeftLocator());
         } else {
           io[inputs[i].name].add(new draw2d.shape.basic.Label({
             text: inputs[i].name,
-          }), new draw2d.layout.locator.RightLocator());
+          }), new draw2d.layout.locator.LeftLocator());
         }
         io[inputs[i].name].repaint(); // Fix some other drawing glitches
         io[inputs[i].name].setName(inputs[i].name);
       }
       for (i = 0; i < outputs.length; i++) {
-        io[outputs[i].name] = obj.createPort("output");
+        io[outputs[i].name] = obj.createPort("input");
         if ('label' in outputs[i]) {
           io[outputs[i].name].add(new draw2d.shape.basic.Label({
             text: outputs[i].label,
-          }), new draw2d.layout.locator.LeftLocator());
+          }), new draw2d.layout.locator.RightLocator());
         } else {
           io[outputs[i].name].add(new draw2d.shape.basic.Label({
             text: outputs[i].name,
-          }), new draw2d.layout.locator.LeftLocator());
+          }), new draw2d.layout.locator.RightLocator());
         }
         io[outputs[i].name].repaint(); // Fix some other drawing glitches
         io[outputs[i].name].setName(outputs[i].name);
