@@ -21,29 +21,44 @@ b3 = draw2d.shape.basic.Rectangle.extend({
      *  This section is used to initialize the required IO for a board
      *
      **/
-     this.boardType = boardType;
+    this.boardType = boardType;
     var obj = this;
-    $.getJSON("../manifests/"+boardType+".json", function(data) {
-      functions = data.functions;
+    $.getJSON("../manifests/" + boardType + ".json", function(data) {
+      inputs = data.inputs;
+      outputs = data.outputs;
       io = {};
       var i;
-      for (i = 0; i < functions.length; i++) {
-        type = functions[i].type;
-        io[functions[i].name] = obj.createPort(type);
-        if (type == "input") {
-          io[functions[i].name].add(new draw2d.shape.basic.Label({
-            text: functions[i].label,
+      for (i = 0; i < inputs.length; i++) {
+        io[inputs[i].name] = obj.createPort("input");
+        if ('label' in inputs[i]) {
+          io[inputs[i].name].add(new draw2d.shape.basic.Label({
+            text: inputs[i].label,
           }), new draw2d.layout.locator.RightLocator());
-        } else if (type == "output") {
-          io[functions[i].name].add(new draw2d.shape.basic.Label({
-            text: functions[i].label,
+        } else {
+          io[inputs[i].name].add(new draw2d.shape.basic.Label({
+            text: inputs[i].name,
+          }), new draw2d.layout.locator.RightLocator());
+        }
+        io[inputs[i].name].repaint(); // Fix some other drawing glitches
+        io[inputs[i].name].setName(inputs[i].name);
+      }
+      for (i = 0; i < outputs.length; i++) {
+        io[outputs[i].name] = obj.createPort("output");
+        if ('label' in outputs[i]) {
+          io[outputs[i].name].add(new draw2d.shape.basic.Label({
+            text: outputs[i].label,
+          }), new draw2d.layout.locator.LeftLocator());
+        } else {
+          io[outputs[i].name].add(new draw2d.shape.basic.Label({
+            text: outputs[i].name,
           }), new draw2d.layout.locator.LeftLocator());
         }
-        io[functions[i].name].repaint(); // Fix some other drawing glitches
-        io[functions[i].name].setName(functions[i].name);
+        io[outputs[i].name].repaint(); // Fix some other drawing glitches
+        io[outputs[i].name].setName(outputs[i].name);
       }
       obj.repaint(); //Fix some drawing glitches
     });
+
     /** Init ParameterTable
      *  This section is used to initialize the parametertable
      **/
@@ -184,11 +199,15 @@ b3 = draw2d.shape.basic.Rectangle.extend({
       document.body.appendChild(base);
 
       var obj = this;
-      $.getJSON("../manifests/"+this.boardType+".json", function(data) {
-        params = data.params;
+      $.getJSON("../manifests/" + this.boardType + ".json", function(data) {
+        params = data.parameters;
         var i;
         for (i = 0; i < params.length; i++) {
-          obj.attachParam(template, base, ".textParam", params[i].name, params[i].label, i);
+          if ('label' in params[i]) {
+            obj.attachParam(template, base, ".textParam", params[i].name, params[i].label, i);
+          } else {
+            obj.attachParam(template, base, ".textParam", params[i].name, params[i].name, i);
+          }
         }
         submit = template.content.querySelector(".submitButton");
         item = document.importNode(submit, true);
