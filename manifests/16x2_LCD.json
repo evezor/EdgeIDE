@@ -1,16 +1,27 @@
 {
   "info": {
-    "model": "7 segment display",
+    "model": "16x2_LCD",
     "main": "edge",
-    "driver": "Seven",
+    "driver": "16x2_LCD",
     "init": "init"
   },
   "inputs": [
+    { "name": "up" },
+    { "name": "down" },
+    { "name": "left" },
+    { "name": "right" },
+    { "name": "button_a" },
+    { "name": "button_b" }
   ],
 
   "outputs": [
-      { "name": "digits_0" },
-      { "name": "digits_1" }
+      { "name": "line_1_0_STR" },
+      { "name": "line_1_1_BYT" },
+      { "name": "line_2_0_STR" },
+      { "name": "line_2_1_BYT" },
+      { "name": "line_1_buf" },
+      { "name": "line_2_buf" }
+
   ],
 
   "parameters": [

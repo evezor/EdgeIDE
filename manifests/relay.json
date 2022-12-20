@@ -1,0 +1,71 @@
+{
+  "info": {
+    "model": "relay"
+  },
+  "inputs": [
+    { "name": "button_1" },
+    { "name": "button_2" },
+    { "name": "button_3" },
+    { "name": "button_4" }
+  ],
+
+  "outputs": [
+      { "name": "relay_1" },
+      { "name": "relay_2" },
+      { "name": "relay_3" },
+      { "name": "relay_4" }
+  ],
+
+  "parameters": [{
+      "name": "button_a",
+      "type": "in",
+      "pin": "E13",
+      "old": 0
+    },
+    {
+      "name": "button_b",
+      "type": "in",
+      "pin": "E12",
+      "old": 0
+    },
+    {
+      "name": "pot_a",
+      "type": "adc",
+      "pin": "A1",
+      "old": null,
+      "range": {
+        "low": 0,
+        "high": 4096
+      },
+      "noise": 20
+    },
+     {
+      "name": "pot_b",
+      "type": "adc",
+      "pin": "A0",
+      "old": null,
+      "range": {
+        "low": 0,
+        "high": 4096
+      },
+      "noise": 20
+    },
+   {
+      "name": "graph_a",
+      "type": "graph",
+      "value": 0,
+      "pin": "E4",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    },
+    {
+      "name": "graph_b",
+      "type": "graph",
+      "value": 0,
+      "pin": "E3",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    }
+
+  ]
+}

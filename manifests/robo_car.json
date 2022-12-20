@@ -1,22 +1,31 @@
 {
   "info": {
-    "model": "Lion Stop",
+    "model": "robo_car",
     "main": "edge",
-    "driver": "Lion_Stop",
+    "driver": "servo",
     "init": "init"
   },
 
   "inputs": [
-    { "name": "limit_switch_0" },
-    { "name": "limit_switch_1" },
-    { "name": "position_get"}
+    { "name": "analog_a" },
+    { "name": "analog_b" },
+    { "name": "analog_c" },
+    { "name": "analog_d" },
+    { "name": "input_a" },
+    { "name": "input_b" },
+    { "name": "input_c" },
+    { "name": "input_d" }
   ],
 
   "outputs": [
-    { "name": "enable" },
-    { "name": "home" },
-    { "name": "left" },
-    { "name": "position_set"}
+    { "name": "motor_a_forward" },
+    { "name": "motor_a_reverse" },
+    { "name": "motor_b_forward" },
+    { "name": "motor_b_reverse" },
+    { "name": "motor_c_forward" },
+    { "name": "motor_c_reverse" },
+    { "name": "motor_d_forward" },
+    { "name": "motor_d_reverse" }
   ],
 
   "parameters": [

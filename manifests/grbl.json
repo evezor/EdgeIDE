@@ -1,0 +1,35 @@
+{
+  "info": {
+    "model": "grbl"
+  },
+  "inputs": [
+    { "name": "x_position" },
+    { "name": "y_position" },
+    { "name": "z_position" },
+    { "name": "x_limit" },
+    { "name": "y_limit" },
+    { "name": "z_limit" }
+  ],
+
+  "outputs": [
+    { "name": "home_x" },
+    { "name": "home_x" },
+    { "name": "home_y" },
+    { "name": "home_x" },
+    { "name": "set_x_position" },
+    { "name": "set_y_position" },
+    { "name": "set_z_position" },
+    { "name": "enable" },
+    { "name": "lock/unlock" },
+    { "name": "start" },
+    { "name": "feedhold" }
+  ],
+
+  "parameters": [{
+      "name": "button0",
+      "type": "boolean",
+      "pin": "D11",
+      "old": 0
+    }
+  ]
+}

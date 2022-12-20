@@ -1,0 +1,18 @@
+{
+  "info": {
+    "model": "variable"
+  },
+  "inputs": [
+    { "name": "output" }
+  ],
+
+  "outputs": [
+    { "name": "input" }
+  ],
+
+  "parameters": [{
+      "name": "duration (ms)",
+      "type": "int"
+    }
+  ]
+}

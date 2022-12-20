@@ -1,40 +1,22 @@
 {
   "info": {
-    "model": "Potentiometer",
-    "main": "edge",
-    "driver": "Potentiometer",
-    "init": "init"
+    "model": "stack_light"
   },
   "inputs": [
-    { "name": "button_a" },
-    { "name": "button_b" },
-    { "name": "pot_a",
-      "range": {
-        "low": 0,
-        "high": 4095
-      }
-    },
-    { "name": "pot_b",
-      "range": {
-        "low": 0,
-        "high": 4095
-        }
-    }
+    { "name": "plus" },
+    { "name": "minus" },
+    { "name": "off" },
+    { "name": "buzz" }
   ],
 
   "outputs": [
-      { "name": "graph_a" ,
-       "range": {
-        "low": 0,
-        "high": 7
-        }
-      },
-      { "name": "graph_b" ,
-       "range": {
-        "low": 0,
-        "high": 7
-        }
-      }
+      { "name": "red" },
+      { "name": "green" },
+      { "name": "yellow" },
+      { "name": "blue" },
+      { "name": "white" },
+      { "name": "buzzer" }
+
   ],
 
   "parameters": [{
@@ -81,11 +63,9 @@
     },
     {
       "name": "graph_b",
-      "type": "graph",
-      "value": 0,
-      "pin": "E3",
-      "dirty": true,
-      "tooltip": "Andrew will write something here"
+
+      "value": 0
+
     }
 
   ]

@@ -96,6 +96,7 @@ body {
   width: 162px;
   z-index: 4;
   padding: 12px 24px 10px 24px;
+  overflow: scroll;
 }
 
 #logo {

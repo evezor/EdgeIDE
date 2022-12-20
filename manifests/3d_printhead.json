@@ -1,0 +1,97 @@
+{
+  "info": {
+    "model": "servo",
+    "main": "edge",
+    "driver": "servo",
+    "init": "init"
+  },
+
+  "inputs": [
+    { "name": "analog_1" },
+    { "name": "thermister" },
+    { "name": "input_1" },
+    { "name": "input_2" },
+    { "name": "probe" }
+  ],
+
+  "outputs": [
+    { "name": "heater" },
+    { "name": "fan" }
+  ],
+
+  "parameters": [
+    {
+      "name": "limit_switch_0",
+      "type": "in",
+      "pin": "D0",
+      "old": 0,
+      "new": 0
+    },
+    {
+      "name": "limit_switch_1",
+      "type": "in",
+      "pin": "D5",
+      "old": 0,
+      "new": 0
+    },
+
+
+    { "name": "home",
+      "type": "action",
+      "old": null,
+      "value": false
+    },
+    { "name": "left",
+      "type": "action",
+      "old": null,
+      "value": false
+    },
+
+    { "name": "enable",
+      "type": "out",
+      "pin": "A4",
+      "old": null
+    },
+    { "name": "last_used",
+      "type": "ms",
+      "value": null
+    },
+
+    { "name": "direction",
+      "type": "out",
+      "pin": "A0",
+      "value": null
+    },
+    { "name": "step",
+      "type": "out",
+      "pin": "A2",
+      "old": null
+    },
+
+    {
+      "name": "position",
+      "type": "steps",
+      "value": 0,
+      "dirty": true
+    },
+
+    { "name": "move_delay",
+      "type": "ms",
+      "value": 1
+    },
+    { "name": "time_out",
+      "type": "ms",
+      "value": 3000
+    },
+    {
+      "name": "min_position",
+      "type": "steps",
+      "value": 0
+    },
+    {
+      "name": "max_position",
+      "type": "steps",
+      "value": 4000
+    }
+  ]
+}

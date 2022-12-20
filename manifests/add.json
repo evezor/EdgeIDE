@@ -1,0 +1,21 @@
+{
+  "info": {
+    "model": "add"
+  },
+  "inputs": [
+    { "name": "output" }
+  ],
+
+  "outputs": [
+    { "name": "input1" },
+    { "name": "input2" }
+  ],
+
+  "parameters": [{
+      "name": "button0",
+      "type": "boolean",
+      "pin": "D11",
+      "old": 0
+    }
+  ]
+}

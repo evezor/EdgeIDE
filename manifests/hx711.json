@@ -1,24 +1,16 @@
 {
   "info": {
-    "model": "b3",
+    "model": "hx711",
     "main": "edge",
-    "driver": "B3",
-    "init": "init"
+    "driver": "hx711",
+    "init": "init",
+    "id": "100"
   },
   "inputs": [
-    { "name": "button0" },
-    { "name": "button1" },
-    { "name": "pot0",
-      "range": {
-        "low": 0,
-        "high": 4096
-      }
-    }
+    { "name": "scale" }
   ],
 
   "outputs": [
-      { "name": "led0" },
-      { "name": "led1" }
   ],
 
   "parameters": [{

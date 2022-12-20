@@ -1,0 +1,22 @@
+{
+  "info": {
+    "model": "variable"
+  },
+  "inputs": [
+    { "name": "output",
+      "random": "that"
+    }
+  ],
+
+  "outputs": [
+    { "name": "new_val1" }
+  ],
+
+  "parameters": [{
+      "name": "button0",
+      "type": "boolean",
+      "pin": "D11",
+      "old": 0
+    }
+  ]
+}

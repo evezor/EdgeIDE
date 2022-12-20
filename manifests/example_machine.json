@@ -1,0 +1,20 @@
+{
+  "info": {
+    "model": "example_machine"
+  },
+  "inputs": [
+    { "name": "spindle" },
+    { "name": "coolant" },
+    { "name": "temperature" }
+  ],
+
+  "outputs": [],
+
+  "parameters": [{
+      "name": "button0",
+      "type": "boolean",
+      "pin": "D11",
+      "old": 0
+    }
+  ]
+}

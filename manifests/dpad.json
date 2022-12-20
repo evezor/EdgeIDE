@@ -1,0 +1,79 @@
+{
+  "info": {
+    "model": "dpad"
+  },
+  "inputs": [
+    { "name": "up" },
+    { "name": "down" },
+    { "name": "left" },
+    { "name": "right" },
+    { "name": "push" },
+    { "name": "a_button" },
+    { "name": "b_button" },
+    { "name": "pot_a" },
+    { "name": "pot_b" }
+  ],
+
+  "outputs": [
+      { "name": "led_0" },
+      { "name": "led_1" },
+      { "name": "led_2" },
+      { "name": "led_3" }
+  ],
+
+  "parameters": [{
+      "name": "button0",
+      "type": "boolean",
+      "pin": "D11",
+      "old": 0
+    },
+    {
+      "name": "button1",
+      "type": "boolean",
+      "pin": "D12",
+      "old": 0
+    },
+    {
+      "name": "pot0",
+      "type": "int",
+      "type": "adc",
+      "pin": "A0",
+      "old": null,
+      "range": {
+        "low": 0,
+        "high": 4096
+      },
+      "noise": 20
+    },
+   {
+      "name": "led0",
+      "type": "int",
+      "value": 0,
+      "pin": "D13",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    },
+    {
+      "name": "led1",
+      "type": "int",
+      "value": 0,
+      "pin": "D5",
+      "dirty": true,
+      "tooltip": "Andrew will write something here"
+    },
+    {
+      "name": "led1d",
+      "type": "dimy",
+      "value": 0,
+      "dirty": true,
+      "timer": {
+          "id": 3,
+          "mode":"PWM",
+          "freq": 1000,
+          "channel": 2,
+          "pin": "D5"
+                },
+      "old": null
+    }
+  ]
+}

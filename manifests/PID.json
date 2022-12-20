@@ -1,0 +1,18 @@
+{
+  "info": {
+    "model": "PID"
+  },
+  "inputs": [
+    { "name": "output" }
+  ],
+
+  "outputs": [
+    { "name": "input" }
+  ],
+
+  "parameters": [
+    { "name": "P" },
+    { "name": "I" },
+    { "name": "D" }
+  ]
+}
