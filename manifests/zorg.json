@@ -1,0 +1,23 @@
+{
+  "info": {
+    "model": "zorg"
+  },
+  "inputs": [
+    { "name": "button_a" },
+    { "name": "button_b" },
+    { "name": "button_c" },
+    { "name": "button_d" }
+  ],
+
+  "outputs": [
+      { "name": "led_a" },
+      { "name": "led_b" },
+      { "name": "led_c" },
+      { "name": "led_d" }
+  ],
+
+  "parameters": [{
+      "name": "button0"
+    }
+  ]
+}
